@@ -7,22 +7,26 @@ class NumBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/background.png'),
-          fit: BoxFit.fitHeight,
-        ),
-      ),
+    return SingleChildScrollView(
       child: Container(
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment(0.71, -0.71),
-            end: Alignment(-0.71, 0.71),
-            colors: [Color(0xEEABDCFF), Color(0xEE0396FF)],
+          image: DecorationImage(
+            image: AssetImage('images/background.png'),
+            fit: BoxFit.fitHeight,
           ),
         ),
-        child: child,
+        child: Container(
+          //height: 6000,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(0.71, -0.71),
+              end: Alignment(-0.71, 0.71),
+              colors: [Color(0xEEABDCFF), Color(0xEE0396FF)],
+            ),
+          ),
+          child: child,
+        ),
       ),
     );
   }
