@@ -12,7 +12,7 @@ class NumBackground extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/background.png'),
+            image: AssetImage('assets/images/background.png'),
             fit: BoxFit.fitHeight,
           ),
         ),
