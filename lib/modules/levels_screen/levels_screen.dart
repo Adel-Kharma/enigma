@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../shared/components/components.dart';
 import '../NumBackground.dart';
 
-class ProgressScreen extends StatelessWidget {
-  const ProgressScreen({super.key});
+class LevelsScreen extends StatelessWidget {
+  const LevelsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,29 +45,46 @@ class ProgressScreen extends StatelessWidget {
                 ),
                 roundedButton(
                     text: 'قيد الممارسة',
-                    textColor: const Color(0xffF9F9F9),
-                    backgroundColor: const Color(0xff181C71)),
+                    textColor: const Color(0xff181C71),
+                    backgroundColor: const Color(0xffF9F9F9)),
                 const SizedBox(
                   width: 8,
                 ),
                 roundedButton(
                     text: 'مستويات',
-                    textColor: const Color(0xff181C71),
-                    backgroundColor: const Color(0xffF9F9F9)),
+                    textColor: const Color(0xffF9F9F9),
+                    backgroundColor: const Color(0xff181C71)),
               ],
             ),
             const SizedBox(
               height: 16,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: progressCard(
-                  title: 'اسم خاص بالتدريب',
-                  subtitle: 'منذ ساعتين وخمس دقائق',
-                  image: 'assets/images/done_screen_test_image.png',
-                  percent: 0.8,
-                  onTap: () {}),
-            )
+            SvgPicture.asset(
+              'assets/images/illustration/boyonpuzzle.svg',
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 16,
+                ),
+                Text(
+                  'اكتشف قوتك واختر مستواك:',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontFamily: 'Cairo',
+                    fontWeight: FontWeight.w800,
+                    height: 0,
+                    letterSpacing: -1.20,
+                  ),
+                ),
+              ],
+            ),
+            levelsCard(text: 'المستوى الأوّل', isOpened: true),
+            levelsCard(text: 'المستوى الثاني', isOpened: false),
+            levelsCard(text: 'المستوى الثالث', isOpened: false),
           ],
         ),
       ),

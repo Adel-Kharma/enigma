@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemCard extends StatelessWidget {
   ItemCard({
@@ -90,13 +89,12 @@ class ItemCard extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: Text('dkfl;j'),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateColor.resolveWith(
-                          (states) => Color(0xFF101C57),
+                          (states) => const Color(0xFF101C57),
                         ),
                         foregroundColor: MaterialStateColor.resolveWith(
-                          (states) => Color(0xFFFFFFFF),
+                          (states) => const Color(0xFFFFFFFF),
                         ),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -104,6 +102,7 @@ class ItemCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12.0),
                         )),
                       ),
+                      child: const Text('dkfl;j'),
                     )
                   ],
                 ),
