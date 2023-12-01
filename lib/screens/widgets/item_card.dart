@@ -4,25 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ItemCard extends StatelessWidget {
   ItemCard({
     super.key,
-    required this.image,
+    required this.imagePath,
     required this.title,
-    required this.newPrice,
     required this.category,
     this.backgroundColor = const Color(0xfff8f5f5),
     this.isFavorite = false,
-    this.saleText = '',
-    this.oldPrice = '',
     required this.onTap,
   });
 
   final Color backgroundColor;
-  final String image;
+  final String imagePath;
   final bool isFavorite;
-  final String saleText;
   final String title;
   final String category;
-  final String oldPrice;
-  final String newPrice;
   void Function() onTap;
 
   @override
@@ -64,28 +58,7 @@ class ItemCard extends StatelessWidget {
                                   const BorderSide(color: Colors.transparent)),
                           child: FittedBox(
                             fit: BoxFit.cover,
-                            child: Image.asset(image),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(80),
-                            color: (saleText == ''
-                                ? Colors.transparent
-                                : Colors.red),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              saleText,
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700),
-                            ),
+                            child: Image.asset(imagePath),
                           ),
                         ),
                       ),
@@ -94,7 +67,7 @@ class ItemCard extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(right: 8.0, left: 8.0, top: 4.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -112,6 +85,9 @@ class ItemCard extends StatelessWidget {
                       textAlign: TextAlign.right,
                       style: const TextStyle(color: Colors.black38),
                     ),
+                    SizedBox(
+                      height: 8,
+                    ),
                     TextButton(
                       onPressed: () {},
                       child: Text('dkfl;j'),
@@ -125,7 +101,7 @@ class ItemCard extends StatelessWidget {
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(12.0),
                         )),
                       ),
                     )
