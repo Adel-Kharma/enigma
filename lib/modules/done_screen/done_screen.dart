@@ -1,6 +1,7 @@
 import 'package:enigma/modules/NumBackground.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
 import '../../shared/components/components.dart';
 
 class DoneScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class DoneScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff03A9F4),
+        backgroundColor: const Color(0xff03A9F4),
         leading: IconButton(
             onPressed: () {},
             icon: const Icon(
@@ -20,7 +21,12 @@ class DoneScreen extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           'مرحبا  اسم المستخدم',
-          style: TextStyle(fontFamily: 'Cairo', color: Color(0xffF9F9F9)),
+          style: TextStyle(
+              fontFamily: 'Cairo',
+              color: Color(0xffF9F9F9),
+              fontWeight: FontWeight.bold),
+          overflow: TextOverflow.fade,
+          maxLines: 1,
         ),
       ),
       body: NumBackground(

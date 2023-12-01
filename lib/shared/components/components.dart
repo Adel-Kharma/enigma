@@ -1,6 +1,9 @@
 import 'package:enigma/shared/components/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+
+import '../../modules/onboarding_screen/model/onboarding_model.dart';
 
 Widget searchBar({
   TextEditingController? controller,
@@ -75,7 +78,7 @@ Widget doneCard(
     required String title,
     required String subtitle}) {
   return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
@@ -100,13 +103,18 @@ Widget doneCard(
                   const SizedBox(
                     width: 12,
                   ),
-                  const Icon(
-                    Icons.star_border_rounded,
-                    color: Color(0xfff0f0f0),
+                  SvgPicture.asset(
+                    'assets/images/illustration/star.svg',
+                    width: 19,
+                    height: 19,
                   ),
-                  const Icon(
-                    Icons.star_border_rounded,
-                    color: Color(0xfff0f0f0),
+                  const SizedBox(
+                    width: 2,
+                  ),
+                  SvgPicture.asset(
+                    'assets/images/illustration/star.svg',
+                    width: 19,
+                    height: 19,
                   ),
                   const Icon(
                     Icons.star_rounded,
@@ -142,7 +150,7 @@ Widget doneCard(
           ),
           Container(
               decoration: BoxDecoration(
-                  color: Color(0xffFF8504),
+                  color: const Color(0xffFF8504),
                   borderRadius: BorderRadius.circular(45)),
               height: 66,
               width: 66,
@@ -168,7 +176,7 @@ Widget progressCard({
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Color(0xfff9f9f9),
+        color: const Color(0xfff9f9f9),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,40 +184,40 @@ Widget progressCard({
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 22,
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontFamily: 'Cairo',
                         color: Color(0xff181C71),
                         fontSize: 13,
                         fontWeight: FontWeight.bold),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward_ios_rounded,
                     color: Color(0xff181C71),
                     size: 13,
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 17,
                   ),
                   Text(
                     subtitle,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Color(0xff767676),
                         fontSize: 8,
                         fontFamily: 'Montserrat'),
@@ -218,36 +226,36 @@ Widget progressCard({
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 135,
                   ),
                   Text(
                     '${(percent * 100).toInt()}%',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 7,
                   ),
                   RotatedBox(
                     quarterTurns: 2,
                     child: LinearPercentIndicator(
-                      barRadius: Radius.circular(45),
+                      barRadius: const Radius.circular(45),
                       percent: percent,
                       animation: true,
                       lineHeight: 10,
                       progressColor: Colors.lightGreenAccent,
                       width: 170,
-                      backgroundColor: Color(0xffe0e0e0),
+                      backgroundColor: const Color(0xffe0e0e0),
                     ),
                   ),
                 ],
@@ -266,6 +274,96 @@ Widget progressCard({
                 'assets/images/progress_screen_test_image.png',
                 fit: BoxFit.cover,
               ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget levelsCard({required String text, required bool isOpened}) {
+  return GestureDetector(
+    onTap: () {},
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: const Color(0xFFF5F5F5),
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x3F000000),
+              blurRadius: 8,
+              offset: Offset(0, 4),
+              spreadRadius: 0,
+            )
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              text,
+              textAlign: TextAlign.right,
+              style: const TextStyle(
+                color: Color(0xFF181C71),
+                fontSize: 13,
+                fontFamily: 'Cairo',
+                fontWeight: FontWeight.w700,
+                height: 0,
+              ),
+            ),
+            if (isOpened)
+              SvgPicture.asset('assets/images/illustration/drop_down_icon.svg')
+            else
+              SvgPicture.asset('assets/images/illustration/lock_icon.svg')
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget onboardingContent(BuildContext context, {required int index}) {
+  return Center(
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(
+              'assets/images/illustration/onboarding${index + 1}.svg'),
+          const SizedBox(
+            height: 87,
+          ),
+          Text(
+            titles[index],
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Color(0xFF191919),
+              fontSize: 20,
+              fontFamily: 'Cairo',
+              fontWeight: FontWeight.w800,
+              height: 0,
+              letterSpacing: -0.60,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            subtitles[index],
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Color(0xFF767676),
+              fontSize: 13,
+              fontFamily: 'Cairo',
+              fontWeight: FontWeight.w700,
+              height: 0,
+              letterSpacing: -0.39,
             ),
           ),
         ],
