@@ -22,72 +22,72 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: SizedBox(
-        height: 260,
-        child: Card(
-          shape: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              color: Colors.transparent,
-              width: 0,
-            ),
+      child: Card(
+        shape: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(
+            color: Colors.transparent,
+            width: 0,
           ),
-          color: backgroundColor,
-          elevation: 8,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Stack(
-                children: [
-                  Stack(
-                    children: [
-                      const SizedBox(
-                        width: 1000,
-                        height: 160,
-                      ),
-                      SizedBox(
-                        height: 160,
-                        width: 1000,
-                        child: Card(
-                          margin: EdgeInsets.zero,
-                          clipBehavior: Clip.antiAlias,
-                          shape: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16),
-                              borderSide:
-                                  const BorderSide(color: Colors.transparent)),
-                          child: FittedBox(
-                            fit: BoxFit.cover,
-                            child: Image.asset(imagePath),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0, left: 8.0, top: 4.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+        ),
+        color: backgroundColor,
+        elevation: 8,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Stack(
+              children: [
+                Stack(
                   children: [
-                    Text(
-                      category,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.fade,
-                      softWrap: false,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      title,
-                      textAlign: TextAlign.right,
-                      style: const TextStyle(color: Colors.black38),
+                    const SizedBox(
+                      width: 1000,
+                      height: 160,
                     ),
                     SizedBox(
-                      height: 8,
+                      height: 160,
+                      width: 1000,
+                      child: Card(
+                        margin: EdgeInsets.zero,
+                        clipBehavior: Clip.antiAlias,
+                        shape: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide:
+                                const BorderSide(color: Colors.transparent)),
+                        child: FittedBox(
+                          fit: BoxFit.cover,
+                          child: Image.asset(imagePath),
+                        ),
+                      ),
                     ),
-                    TextButton(
+                  ],
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0, left: 8.0, top: 4.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    category,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.fade,
+                    softWrap: false,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
+                  Text(
+                    title,
+                    textAlign: TextAlign.right,
+                    style: const TextStyle(color: Colors.black38),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0, left: 8.0),
+                    child: TextButton(
                       onPressed: () {},
                       style: ButtonStyle(
                         backgroundColor: MaterialStateColor.resolveWith(
@@ -103,12 +103,12 @@ class ItemCard extends StatelessWidget {
                         )),
                       ),
                       child: const Text('dkfl;j'),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

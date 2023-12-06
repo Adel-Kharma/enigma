@@ -162,7 +162,7 @@ class HomePage extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 272,
+                                      height: 282,
                                       child: PageView(
                                         padEnds: false,
                                         controller: controller,

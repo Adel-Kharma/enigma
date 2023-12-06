@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import '../../modules/onboarding_screen/model/onboarding_model.dart';
-
 Widget searchBar({
   TextEditingController? controller,
   String text = 'ابحث عن ...',
@@ -326,7 +324,7 @@ Widget levelsCard({required String text, required bool isOpened}) {
     ),
   );
 }
-
+/*
 Widget onboardingContent(BuildContext context, {required int index}) {
   return Center(
     child: Padding(
@@ -370,4 +368,4 @@ Widget onboardingContent(BuildContext context, {required int index}) {
       ),
     ),
   );
-}
+}*/
