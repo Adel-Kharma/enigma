@@ -1,7 +1,10 @@
+import 'package:enigma/modules/onboarding_screen/model/onboarding_model.dart';
 import 'package:enigma/shared/components/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+
+import '../../modules/onboarding_screen/onboarding_screen.dart';
 
 Widget searchBar({
   TextEditingController? controller,
@@ -324,48 +327,73 @@ Widget levelsCard({required String text, required bool isOpened}) {
     ),
   );
 }
-/*
+
 Widget onboardingContent(BuildContext context, {required int index}) {
-  return Center(
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SvgPicture.asset(
-              'assets/images/illustration/onboarding${index + 1}.svg'),
-          const SizedBox(
-            height: 87,
-          ),
-          Text(
-            titles[index],
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Color(0xFF191919),
-              fontSize: 20,
-              fontFamily: 'Cairo',
-              fontWeight: FontWeight.w800,
-              height: 0,
-              letterSpacing: -0.60,
+  (index == 2) ? lastPageFlag = true : lastPageFlag = false;
+  return Stack(children: [
+    Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            (index == 0)
+                ? SvgPicture.asset(
+                    'assets/images/illustration/onboarding_up_$index.svg')
+                : const SizedBox(),
+            SvgPicture.asset(
+                'assets/images/illustration/onboarding_up_${index + 1}.svg'),
+          ],
+        ),
+        Row(
+          children: [
+            SvgPicture.asset(
+                'assets/images/illustration/onboarding_down_${index + 1}.svg'),
+          ],
+        )
+      ],
+    ),
+    Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset(
+                'assets/images/illustration/onboarding${index + 1}.svg'),
+            const SizedBox(
+              height: 87,
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            subtitles[index],
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Color(0xFF767676),
-              fontSize: 13,
-              fontFamily: 'Cairo',
-              fontWeight: FontWeight.w700,
-              height: 0,
-              letterSpacing: -0.39,
+            Text(
+              titles[index],
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Color(0xFF191919),
+                fontSize: 20,
+                fontFamily: 'Cairo',
+                fontWeight: FontWeight.w800,
+                height: 0,
+                letterSpacing: -0.60,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              subtitles[index],
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Color(0xFF767676),
+                fontSize: 13,
+                fontFamily: 'Cairo',
+                fontWeight: FontWeight.w700,
+                height: 0,
+                letterSpacing: -0.39,
+              ),
+            ),
+          ],
+        ),
       ),
     ),
-  );
-}*/
+  ]);
+}
