@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'cubit/onboarding_states.dart';
+import 'cubit/onboarding_state.dart';
 
 bool lastPageFlag = false;
 
@@ -15,7 +15,7 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<OnboardingCubit>(
       create: (context) => OnboardingCubit(),
-      child: BlocConsumer<OnboardingCubit, OnboardingStates>(
+      child: BlocConsumer<OnboardingCubit, OnboardingState>(
         listener: (context, state) {},
         builder: (context, state) {
           OnboardingCubit cubit = BlocProvider.of(context);
@@ -23,7 +23,6 @@ class OnboardingScreen extends StatelessWidget {
             body: Stack(
               children: [
                 PageView.builder(
-                  physics: const BouncingScrollPhysics(),
                   onPageChanged: cubit.onPageChanged,
                   controller: cubit.controller,
                   itemBuilder: (context, index) {

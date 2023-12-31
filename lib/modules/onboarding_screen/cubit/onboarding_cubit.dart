@@ -1,8 +1,8 @@
-import 'package:enigma/modules/onboarding_screen/cubit/onboarding_states.dart';
+import 'package:enigma/modules/onboarding_screen/cubit/onboarding_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OnboardingCubit extends Cubit<OnboardingStates> {
+class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit() : super(OnboardingInitialState());
 
   PageController controller = PageController();
