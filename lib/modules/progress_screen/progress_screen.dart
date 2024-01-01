@@ -63,7 +63,7 @@ class ProgressScreen extends StatelessWidget {
               child: progressCard(
                   title: 'اسم خاص بالتدريب',
                   subtitle: 'منذ ساعتين وخمس دقائق',
-                  image: 'assets/images/done_screen_test_image.png',
+                  image: 'assets/images/done_screen_test_image.svg',
                   percent: 0.8,
                   onTap: () {}),
             )
