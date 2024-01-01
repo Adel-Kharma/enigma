@@ -119,7 +119,7 @@ class DoneScreen extends StatelessWidget {
                       ),
                       doneCard(
                           color: Colors.blue,
-                          image: 'assets/images/done_screen_test_image.png',
+                          image: 'assets/images/done_screen_test_image.svg',
                           stars: 3,
                           title: 'عبارة وصفية',
                           subtitle:
