@@ -315,10 +315,7 @@ Widget levelsCard({required String text, required bool isOpened}) {
               ),
             ),
             if (isOpened)
-              RotatedBox(
-                  quarterTurns: 1,
-                  child: SvgPicture.asset(
-                      'assets/images/illustration/drop_down_icon.svg'))
+              SvgPicture.asset('assets/images/illustration/drop_down_icon.svg')
             else
               SvgPicture.asset('assets/images/illustration/lock_icon.svg')
           ],
