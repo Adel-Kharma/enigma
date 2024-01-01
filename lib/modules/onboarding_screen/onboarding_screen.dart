@@ -27,7 +27,8 @@ class OnboardingScreen extends StatelessWidget {
                   controller: cubit.controller,
                   itemBuilder: (context, index) {
                     return SizedBox(
-                        child: onboardingContent(context, index: index));
+                        child:
+                            onboardingContent(context: context, index: index));
                   },
                   itemCount: 3,
                 ),

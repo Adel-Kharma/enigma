@@ -9,7 +9,7 @@ class LevelSpecifierCubit extends Cubit<LevelSpecifierState> {
 
   static LevelSpecifierCubit get(context) => BlocProvider.of(context);
 
-  List<Widget> _contents = [Section1(), Section2()];
+  final List<Widget> _contents = [const Section1(), const Section2()];
 
   int index = 0;
 

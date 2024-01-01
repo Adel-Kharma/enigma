@@ -1,3 +1,4 @@
+import 'package:enigma/modules/lesson_test_screen/cubit/lesson_test_cubit.dart';
 import 'package:enigma/modules/onboarding_screen/model/onboarding_model.dart';
 import 'package:enigma/shared/components/constants.dart';
 import 'package:flutter/material.dart';
@@ -155,7 +156,7 @@ Widget doneCard(
                   borderRadius: BorderRadius.circular(45)),
               height: 66,
               width: 66,
-              child: Image.asset(
+              child: SvgPicture.asset(
                 image,
                 height: 60,
                 width: 60,
@@ -328,7 +329,7 @@ Widget levelsCard({required String text, required bool isOpened}) {
   );
 }
 
-Widget onboardingContent(BuildContext context, {required int index}) {
+Widget onboardingContent({required context, required int index}) {
   (index == 2) ? lastPageFlag = true : lastPageFlag = false;
   return Stack(children: [
     Column(
@@ -396,4 +397,83 @@ Widget onboardingContent(BuildContext context, {required int index}) {
       ),
     ),
   ]);
+}
+
+Widget choiceCard({
+  required String answer,
+  required int index,
+  required LessonTestCubit cubit,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: GestureDetector(
+      onTap: () {
+        cubit.changeChosenAnswer(index);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: (index == cubit.chosenAnswer)
+                ? const Color(0xFF181C71)
+                : const Color(0xffe0e0e0),
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            SvgPicture.asset(
+              (index == cubit.chosenAnswer)
+                  ? 'assets/images/illustration/chosen_circle.svg'
+                  : 'assets/images/illustration/not_chosen_circle.svg',
+              width: 16,
+              height: 16,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Flexible(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    answer,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Color(0xFF181C71),
+                      fontSize: 13,
+                      fontFamily: 'Cairo',
+                      fontWeight: FontWeight.w700,
+                      height: 0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget multipleChoiceCard(
+    {required int questionNumber,
+    required String answer1,
+    required String answer2,
+    required String answer3,
+    required String answer4,
+    required LessonTestCubit cubit}) {
+  cubit.chosenAnswer = 0;
+  return Column(
+    children: [
+      choiceCard(answer: answer1, index: 1, cubit: cubit),
+      choiceCard(answer: answer2, index: 2, cubit: cubit),
+      choiceCard(answer: answer3, index: 3, cubit: cubit),
+      choiceCard(answer: answer4, index: 4, cubit: cubit),
+    ],
+  );
 }
