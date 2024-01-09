@@ -54,20 +54,35 @@ Widget searchBar({
   );
 }
 
-Widget roundedButton({
-  required String text,
-  required Color textColor,
-  required Color backgroundColor,
-}) {
-  return Container(
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(45), color: backgroundColor),
-    child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
-      child: Text(
-        text,
-        style: TextStyle(
-            color: textColor, fontWeight: FontWeight.bold, fontFamily: 'Cairo'),
+Widget roundedButton(
+    {required String text,
+    required Color textColor,
+    required Color backgroundColor,
+    required Function? onSec,
+    bool selected = false}) {
+  if (selected) {
+    Color t = textColor;
+    textColor = backgroundColor;
+    backgroundColor = t;
+  }
+
+  return InkWell(
+    highlightColor: Colors.cyan,
+    onTap: () {
+      onSec!();
+    },
+    child: Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(45), color: backgroundColor),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
+        child: Text(
+          text,
+          style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Cairo'),
+        ),
       ),
     ),
   );
@@ -181,6 +196,7 @@ Widget progressCard({
         color: const Color(0xfff9f9f9),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
@@ -265,7 +281,7 @@ Widget progressCard({
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 9.0),
+            padding: const EdgeInsets.symmetric(vertical: 9.0, horizontal: 8),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
@@ -284,9 +300,12 @@ Widget progressCard({
   );
 }
 
-Widget levelsCard({required String text, required bool isOpened}) {
+Widget levelsCard(
+    {required String text, required bool isOpened, Function? onTap}) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      onTap!();
+    },
     child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
       child: Container(
@@ -341,18 +360,24 @@ Widget onboardingContent({required context, required int index}) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            (index == 0)
+            /*(index == 0)
                 ? SvgPicture.asset(
-                    'assets/images/illustration/onboarding_up_$index.svg')
-                : const SizedBox(),
+                    'assets/images/illustration/onboarding_up_$index.svg',
+                    width: MediaQuery.of(context).size.width,
+                  )
+                : const SizedBox(),*/
             SvgPicture.asset(
-                'assets/images/illustration/onboarding_up_${index + 1}.svg'),
+              'assets/images/illustration/onboarding_up_${index + 1}.svg',
+              width: MediaQuery.of(context).size.width,
+            ),
           ],
         ),
         Row(
           children: [
             SvgPicture.asset(
-                'assets/images/illustration/onboarding_down_${index + 1}.svg'),
+              'assets/images/illustration/onboarding_down_${index + 1}.svg',
+              width: MediaQuery.of(context).size.width,
+            ),
           ],
         )
       ],
@@ -364,7 +389,8 @@ Widget onboardingContent({required context, required int index}) {
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.asset(
-                'assets/images/illustration/onboarding${index + 1}.svg'),
+              'assets/images/illustration/onboarding${index + 1}.svg',
+            ),
             const SizedBox(
               height: 87,
             ),
@@ -454,6 +480,55 @@ Widget choiceCard({
                     ),
                   ),
                 ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget choiceCardForWidget({
+  required Widget answer,
+  required int index,
+  required LessonTestCubit cubit,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: GestureDetector(
+      onTap: () {
+        cubit.changeChosenAnswer(index);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: (index == cubit.chosenAnswer)
+                ? const Color(0xFF181C71)
+                : const Color(0xffe0e0e0),
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            SvgPicture.asset(
+              (index == cubit.chosenAnswer)
+                  ? 'assets/images/illustration/chosen_circle.svg'
+                  : 'assets/images/illustration/not_chosen_circle.svg',
+              width: 16,
+              height: 16,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Flexible(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [answer],
               ),
             ),
           ],

@@ -1,15 +1,31 @@
+import 'package:enigma/classes/logic/contdis/LessonReader.dart';
 import 'package:enigma/screens/LevelSpecifierScreeen.dart';
+import 'package:enigma/screens/widgets/closed_section_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'state.dart';
 
 class LevelSpecifierCubit extends Cubit<LevelSpecifierState> {
-  LevelSpecifierCubit() : super(LevelSpecifierInitial());
+  final List<Widget> _contents = [];
+
+  LevelSpecifierCubit(List<Widget> widgets, List<LessonReader> lessons)
+      : super(LevelSpecifierInitial()) {
+    widgets.add(ClosedSection());
+    widgets.add(ClosedSection());
+    widgets.add(ClosedSection());
+    //todo set logic or on the lessons
+    _contents.add(Section1(
+      widgets: widgets,
+    )); //todo لازم يا حباب تعطي الدروس من هون
+    _contents.add(Section2(
+      testContents: lessons,
+    ));
+  }
+
+  List<Widget> widgets = [];
 
   static LevelSpecifierCubit get(context) => BlocProvider.of(context);
-
-  final List<Widget> _contents = [const Section1(), const Section2()];
 
   int index = 0;
 

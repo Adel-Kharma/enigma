@@ -32,7 +32,7 @@ class ProgressScreen extends StatelessWidget {
         child: Column(
           children: [
             searchBar(),
-            Row(
+            /*Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 roundedButton(
@@ -54,7 +54,7 @@ class ProgressScreen extends StatelessWidget {
                     textColor: const Color(0xff181C71),
                     backgroundColor: const Color(0xffF9F9F9)),
               ],
-            ),
+            ),*/
             const SizedBox(
               height: 16,
             ),

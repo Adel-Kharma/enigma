@@ -102,16 +102,13 @@ class LevelSpecifierTopBar extends StatelessWidget {
         ),
         Positioned(
           top: 3,
-          left: 3,
-          child: Transform.rotate(
-            angle: 3.14159,
-            child: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios_rounded,
-              ),
+          right: 3,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
             ),
           ),
         ),

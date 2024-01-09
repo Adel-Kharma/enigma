@@ -3,6 +3,10 @@
 import 'dart:ui';
 
 import 'package:enigma/classes/level_progress.dart';
+import 'package:enigma/classes/logic/contdis/Lesson.dart';
+import 'package:enigma/classes/logic/contdis/LessonReader.dart';
+import 'package:enigma/classes/logic/contdis/Topic.dart';
+import 'package:enigma/modules/lesson_test_screen/lesson_test_screen.dart';
 import 'package:enigma/screens/widgets/closed_section_card.dart';
 import 'package:enigma/screens/widgets/exercise_card.dart';
 import 'package:enigma/screens/widgets/opened_section_card.dart';
@@ -16,12 +20,30 @@ import '../shared/cubit/level_specifier/cubit.dart';
 import 'widgets/level_specifier_top_bar.dart';
 
 class LevelSpecifierScreen extends StatelessWidget {
-  const LevelSpecifierScreen({super.key});
+  const LevelSpecifierScreen({super.key, required this.lessonList});
+
+  final List<LessonReader> lessonList;
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> topics = [];
+    topics.add(
+      SizedBox(
+        height: 24,
+      ),
+    );
+    for (int j = 0; j < lessonList.length; j++) {
+      topics.add(
+        OpenedSection(
+            title: lessonList[j].title,
+            levelContent: List<Topic>.generate(lessonList[j].getTopics().length,
+                (index) => lessonList[j].getTopics()[index]),
+            pages: lessonList[j].getPages()),
+      );
+    }
+
     return BlocProvider<LevelSpecifierCubit>(
-        create: (context) => LevelSpecifierCubit(),
+        create: (context) => LevelSpecifierCubit(topics, lessonList),
         child: BlocConsumer<LevelSpecifierCubit, LevelSpecifierState>(
             listener: (context, state) {},
             builder: (context, state) {
@@ -88,7 +110,7 @@ class LevelSpecifierScreen extends StatelessWidget {
                                           SizedBox(
                                             width: 210,
                                             child: Text(
-                                              'نص تحفيزي يحفز المستخدم عند دخوله لهذا المستوى',
+                                              'يساعدك هذا المستوى على اكتساب الأساسيات التي سترافقك في مسيرتك التعليمية',
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
                                                 color: Color(0xFFF9F9F9),
@@ -157,10 +179,30 @@ class LevelSpecifierScreen extends StatelessWidget {
   }
 }
 
+class Section1 extends StatelessWidget {
+  const Section1({
+    super.key,
+    required this.widgets,
+  });
+
+  final List<Widget> widgets;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: widgets,
+    );
+  }
+}
+
 class Section2 extends StatelessWidget {
   const Section2({
     super.key,
+    required this.testContents,
   });
+
+  final List<LessonReader> testContents;
 
   @override
   Widget build(BuildContext context) {
@@ -170,51 +212,17 @@ class Section2 extends StatelessWidget {
           height: 24,
         ),
         IntrinsicGridView.vertical(
-            horizontalSpace: 16,
-            verticalSpace: 12,
-            children: [
-              ExerciseCard(),
-              ExerciseCard(
-                color: Color(0xffE71D36),
-              ),
-              ExerciseCard(
-                svgPath: 'assets/images/illustration/smiling.svg',
-              ),
-              ExerciseCard(
-                color: Color(0xffFF9C07),
-              ),
-              ExerciseCard(
-                svgPath: 'assets/images/illustration/tongueriser.svg',
-              ),
-              ExerciseCard(),
-              ExerciseCard(),
-            ]),
+          horizontalSpace: 16,
+          verticalSpace: 12,
+          children: List.generate(
+            testContents.length,
+            (index) =>
+                ExerciseCard(practices: testContents[index].getPractices()),
+          ),
+        ),
         SizedBox(
           height: 16,
         )
-      ],
-    );
-  }
-}
-
-class Section1 extends StatelessWidget {
-  const Section1({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        SizedBox(
-          height: 24,
-        ),
-        OpenedSection(),
-        ClosedSection(),
-        ClosedSection(),
-        ClosedSection(),
-        ClosedSection(),
       ],
     );
   }

@@ -1,95 +1,132 @@
+import 'package:enigma/classes/logic/contdis/Page.dart' as lesson_page;
 import 'package:enigma/modules/lesson_screen/cubit/lesson_screen_cubit.dart';
+import 'package:enigma/modules/lesson_test_screen/cubit/lesson_test_cubit.dart';
+import 'package:enigma/modules/lesson_test_screen/cubit/lesson_test_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class LessonScreen extends StatelessWidget {
-  const LessonScreen({super.key});
+  LessonScreen({super.key, required this.pages});
+
+  final List<lesson_page.Page> pages;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LessonScreenCubit>(
-      create: (context) => LessonScreenCubit(),
-      child: BlocConsumer<LessonScreenCubit, LessonScreenState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          LessonScreenCubit cubit = BlocProvider.of(context);
-          return SafeArea(
-            child: Scaffold(
-              backgroundColor: const Color(0xffFFFFFF),
-              body: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Stack(
-                  children: [
-                    PageView.builder(
-                      onPageChanged: cubit.onPageChanged,
-                      controller: cubit.controller,
-                      itemBuilder: (context, index) => GestureDetector(
-                        onTap: () {
-                          if (cubit.sectionNumberToShow + 1 == textaya.length) {
-                            if (!cubit.isLast) {
-                              cubit.controller.nextPage(
-                                  duration: const Duration(milliseconds: 600),
-                                  curve: Curves.linearToEaseOut);
+        create: (context) => LessonScreenCubit(),
+        child: BlocConsumer<LessonScreenCubit, LessonScreenState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            LessonScreenCubit cubit = LessonScreenCubit.get(context);
+            cubit.components = pages;
+            cubit.numberOfPages = pages.length;
+
+            return SafeArea(
+              child: Scaffold(
+                backgroundColor: const Color(0xffFFFFFF),
+                body: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Stack(
+                    children: [
+                      PageView.builder(
+                        onPageChanged: cubit.onPageChanged,
+                        controller: cubit.controller,
+                        itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            if (true) {
+                              if (!cubit.isLast) {
+                                cubit.controller.nextPage(
+                                    duration: const Duration(milliseconds: 600),
+                                    curve: Curves.linearToEaseOut);
+                              }
+                            } else {
+                              cubit.showText(1);
                             }
-                          } else {
-                            cubit.showText(1);
-                          }
-                        },
-                        child: lessonScreen(cubit: cubit),
-                      ),
-                      itemCount: 6,
-                    ),
-                    Container(
-                      color: const Color(0xffFFFFFF),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const SizedBox(
-                            width: 24,
-                          ),
-                          SmoothPageIndicator(
-                            controller: cubit.controller,
-                            count: 6,
-                            effect: const ScrollingDotsEffect(
-                              dotHeight: 10,
-                              dotWidth: 32,
-                              dotColor: Color(0xffC7D3EB),
-                              activeDotColor: Color(0xff2196F3),
+                          },
+                          child: BlocProvider<LessonTestCubit>(
+                            create: (context) => LessonTestCubit(),
+                            child:
+                                BlocConsumer<LessonTestCubit, LessonTestState>(
+                              listener: (context, state) {},
+                              builder: (context, state) {
+                                LessonTestCubit testCubit =
+                                    LessonTestCubit.get(context);
+                                return LessonScreenPage(
+                                  cubit: cubit,
+                                  page: cubit.components![index].getPage(
+                                      testCubit, context, testCubit.randomI),
+                                );
+                              },
                             ),
                           ),
-                          GestureDetector(
-                              onTap: () {},
-                              child: SvgPicture.asset(
-                                  'assets/images/illustration/exit.svg')),
-                        ],
+                        ),
+                        itemCount: pages.length,
                       ),
-                    ),
-                  ],
+                      Container(
+                        color: const Color(0xffFFFFFF),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const SizedBox(
+                              width: 24,
+                            ),
+                            SmoothPageIndicator(
+                              controller: cubit.controller,
+                              count: cubit.numberOfPages,
+                              effect: const ScrollingDotsEffect(
+                                dotHeight: 10,
+                                dotWidth: 32,
+                                dotColor: Color(0xffC7D3EB),
+                                activeDotColor: Color(0xff2196F3),
+                              ),
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                            shape: OutlineInputBorder(
+                                                borderSide: BorderSide.none,
+                                                borderRadius:
+                                                    BorderRadius.circular(16)),
+                                            content: const SizedBox(
+                                              height: 120,
+                                              child: Center(
+                                                  child: Text('بكير تنهي هلأ')),
+                                            ),
+                                          ));
+                                },
+                                child: SvgPicture.asset(
+                                    'assets/images/illustration/exit.svg')),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
-      ),
-    );
+            );
+          },
+        ));
   }
 }
 
-Widget sectionText({
-  required int index,
-  required int shownText,
-}) =>
+Widget sectionText(
+        {required int index,
+        required int shownText,
+        required LessonTestCubit cubit}) =>
     AnimatedOpacity(
       opacity: (shownText >= index) ? 1 : 0,
       duration: const Duration(seconds: 1),
-      child: Column(
+      child: const Column(
         children: [
           Text(
-            textaya[index],
+            'textaya[index]',
             textAlign: TextAlign.right,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.black,
               fontSize: 13,
               fontFamily: 'Cairo',
@@ -98,25 +135,52 @@ Widget sectionText({
               letterSpacing: -0.39,
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 8,
           ),
         ],
       ),
     );
 
-List<String> textaya = [
-  'لغة ++C هي لغة برمجة عالية المستوى ومتعددة الاستخدامات. تعتبر ++C تطويرًا للغة C، حيث أضيفت إليها ميزات إضافية وتحسينات. تم تطويرها بواسطة Bjarne Stroustrup في أوائل الثمانينيات.',
-  'لغة ++C هي لغة برمجة عالية المستوى ومتعددة الاستخدامات. تعتبر ++C تطويرًا للغة C، حيث أضيفت إليها ميزات إضافية وتحسينات. تم تطويرها بواسطة Bjarne Stroustrup في أوائل الثمانينيات.',
-  'لغة ++C هي لغة برمجة عالية المستوى ومتعددة الاستخدامات. تعتبر ++C تطويرًا للغة C، حيث أضيفت إليها ميزات إضافية وتحسينات. تم تطويرها بواسطة Bjarne Stroustrup في أوائل الثمانينيات.',
-  'لغة ++C هي لغة برمجة عالية المستوى ومتعددة الاستخدامات. تعتبر ++C تطويرًا للغة C، حيث أضيفت إليها ميزات إضافية وتحسينات. تم تطويرها بواسطة Bjarne Stroustrup في أوائل الثمانينيات.',
-  'توفر ++C مفاهيم البرمجة الكائنية والتوريث والتعداد والاستثناءات والتعامل مع الذاكرة بشكل مباشر. تدعم أيضًا العديد من المكتبات القوية والإطارات التطويرية التي تسهل على المطورين بناء تطبيقات قوية ومتقدمة.',
-  'توفر ++C مفاهيم البرمجة الكائنية والتوريث والتعداد والاستثناءات والتعامل مع الذاكرة بشكل مباشر. تدعم أيضًا العديد من المكتبات القوية والإطارات التطويرية التي تسهل على المطورين بناء تطبيقات قوية ومتقدمة.'
-];
+class LessonScreenPage extends StatelessWidget {
+  LessonScreenPage({
+    super.key,
+    required this.cubit,
+    required this.page,
+  });
 
-Widget lessonScreen({
-  required LessonScreenCubit cubit,
-}) =>
+  final LessonScreenCubit cubit;
+  final Widget page;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //cubit.components![1][1],
+          const SizedBox(
+            height: 32,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/images/illustration/testillus.svg'),
+            ],
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          page
+        ],
+      ),
+    );
+  }
+}
+
+/*
+Widget lessonScreen(
+        {required LessonScreenCubit cubit, required lesson_page.Page page}) =>
     SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,7 +198,7 @@ Widget lessonScreen({
           const SizedBox(
             height: 8,
           ),
-          const Text(
+          /*const Text(
             'مقدمة نحو لغة ++C:',
             textAlign: TextAlign.right,
             style: TextStyle(
@@ -168,7 +232,8 @@ Widget lessonScreen({
               children: List.generate(
                   textaya.length,
                   (index) => sectionText(
-                      index: index, shownText: cubit.sectionNumberToShow))),
+                      index: index, shownText: cubit.sectionNumberToShow))),*/
+          page.getPage()
         ],
       ),
-    );
+    );*/

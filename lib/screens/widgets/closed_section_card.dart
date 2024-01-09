@@ -30,7 +30,7 @@ class ClosedSection extends StatelessWidget {
                 child: SvgPicture.asset('assets/images/locked.svg'),
               ),
               Text(
-                'نظرية  الاحتمالات',
+                'هذا الدرس مقفل',
                 textAlign: TextAlign.right,
                 style: TextStyle(
                   color: Color(0xFFE9E9E9),
