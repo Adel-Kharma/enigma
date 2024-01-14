@@ -8,6 +8,7 @@ import 'lesson_test_state.dart';
 class LessonTestCubit extends Cubit<LessonTestState> {
   LessonTestCubit() : super(LessonTestInitialState()) {
     int l = Random().nextInt(4);
+    int sectionToShow = 0;
 
     while (randomI.length != 4) {
       if (!randomI.contains(l)) {

@@ -1,184 +1,173 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:enigma/modules/NumBackground.dart';
-import 'package:enigma/modules/levels_screen/levels_screen.dart';
-import 'package:enigma/screens/LevelSpecifierScreeen.dart';
-import 'package:enigma/screens/widgets/item_card.dart';
+import 'package:enigma/modules/educational_screens/educational_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gradient_widgets/gradient_widgets.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //appBar: AppBar(),
       body: SafeArea(
-        child: CustomScrollView(slivers: [
-          SliverFillRemaining(
-            child: SingleChildScrollView(
-              child: Stack(children: [
-                NumBackground(
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        bottom: 0,
-                        child: Container(
-                          height: MediaQuery.of(context).size.height / 2,
-                          width: MediaQuery.of(context).size.width,
-                          color: const Color(0xFFF9F9F9),
-                          child: const Center(
-                            child: Text(''),
+        child: NumBackground(
+          child: CustomScrollView(slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: [
+                  //intro
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2, right: 16, left: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Column(
+                          //mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 60,
+                              width: 220,
+                              child: Text(
+                                'مرحباً اسم المستخدم',
+                                style: TextStyle(
+                                  color: Color(0xFFF9F9F9),
+                                  fontSize: 26,
+                                  fontFamily: 'Cairo',
+                                  fontWeight: FontWeight.w800,
+                                  height: 0,
+                                  letterSpacing: -1.20,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ),
+                            SizedBox(height: 8),
+                            SizedBox(
+                              width: 180,
+                              child: Text(
+                                'لازم تدرس إحتمالات شان ما يصير فيك مثل جماعة ',
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                  color: Color(0xFFF9F9F9),
+                                  fontSize: 15,
+                                  fontFamily: 'Cairo',
+                                  fontWeight: FontWeight.w700,
+                                  height: 0,
+                                  letterSpacing: -0.39,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/illustration/girlstudying.svg',
+                          height: 130,
+                          allowDrawingOutsideViewBox: true,
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Expanded(
+                    child: Container(
+                      width: double.infinity,
+                      decoration: ShapeDecoration(
+                        color: Color(0xFFF9F9F9),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(16),
+                            topRight: Radius.circular(16),
                           ),
                         ),
                       ),
-                      Column(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          //intro
+                          SizedBox(
+                            height: 16,
+                          ),
+                          //offer
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 2, right: 16, left: 8),
-                            child: Row(
+                                top: 16.0, right: 16, left: 16),
+                            child: Stack(
+                              alignment: Alignment.center,
                               children: [
-                                const Column(
-                                  //mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'مرحبا اسم المستخدم',
-                                      style: TextStyle(
-                                        color: Color(0xFFF9F9F9),
-                                        fontSize: 26,
-                                        fontFamily: 'Cairo',
-                                        fontWeight: FontWeight.w800,
-                                        height: 0,
-                                        letterSpacing: -1.20,
+                                Container(
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16),
                                       ),
-                                    ),
-                                    const SizedBox(height: 8),
-                                    SizedBox(
-                                      width: 180,
-                                      child: Text(
-                                        'لازم تدرس إحتمالات شان ما يصير فيك مثل جماعة ',
-                                        textAlign: TextAlign.right,
-                                        style: TextStyle(
-                                          color: Color(0xFFF9F9F9),
-                                          fontSize: 15,
-                                          fontFamily: 'Cairo',
-                                          fontWeight: FontWeight.w700,
-                                          height: 0,
-                                          letterSpacing: -0.39,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Expanded(
+                                      color: Colors.transparent,
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Color(0x66000000),
+                                            blurRadius: 8,
+                                            spreadRadius: 0.04,
+                                            blurStyle: BlurStyle.normal)
+                                      ]),
                                   child: SvgPicture.asset(
-                                    'assets/images/illustration/girlstudying.svg',
-                                    //height: 220,
-                                    allowDrawingOutsideViewBox: true,
-                                    //fit: BoxFit.fitWidth,
+                                    'assets/images/offercard.svg',
+                                    fit: BoxFit.fill,
+                                    width: MediaQuery.of(context).size.width,
                                   ),
+                                ),
+                                Text(
+                                  'من جد وجد',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontFamily: 'Cairo',
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 )
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16.0),
-                            child: Container(
-                              decoration: ShapeDecoration(
-                                color: Color(0xFFF9F9F9),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(16),
-                                    topRight: Radius.circular(16),
-                                  ),
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 16,
-                                  ),
-                                  //offer
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 16.0, right: 16, left: 16),
-                                    child: Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        Container(
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(16),
-                                                bottomRight:
-                                                    Radius.circular(16),
-                                              ),
-                                              color: Colors.transparent,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Color(0x66000000),
-                                                    blurRadius: 8,
-                                                    spreadRadius: 0.04,
-                                                    blurStyle: BlurStyle.normal)
-                                              ]),
-                                          child: SvgPicture.asset(
-                                            'assets/images/offercard.svg',
-                                            fit: BoxFit.fill,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                          ),
-                                        ),
-                                        Text(
-                                          'من جد وجد',
-                                          textAlign: TextAlign.right,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontFamily: 'Cairo',
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  OptionSelector(
-                                      title: 'القسم التعليمي',
-                                      desc:
-                                          'هنا سوف تتعلم يا صديقي الاحتمالات لكي ترفع المادة بالجامعة، المهم نص بشبه هيك شي',
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LevelsScreen()));
-                                      },
-                                      svgPath: 'assets/images/learning.svg'),
-                                  OptionSelector(
-                                      title: 'الإعدادات',
-                                      desc:
-                                          'هنا نكتب ما تتضمنه هذه الواجهة من إعدادات أو معلومات رئيسية في هذا القسم يعني',
-                                      onTap: () {},
-                                      svgPath: 'assets/images/setting.svg'),
-//text
-                                ],
-                              ),
-                            ),
-                          ),
+                          OptionSelector(
+                              title: 'القسم التعليمي',
+                              desc:
+                                  'هنا سوف تتعلم يا صديقي الاحتمالات لكي ترفع المادة بالجامعة، المهم نص بشبه هيك شي',
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            EducationalScreens()));
+                              },
+                              svgPath: 'assets/images/learning.svg'),
+                          OptionSelector(
+                              title: 'الإعدادات',
+                              desc:
+                                  'هنا نكتب ما تتضمنه هذه الواجهة من إعدادات أو معلومات رئيسية في هذا القسم يعني',
+                              onTap: () {},
+                              svgPath: 'assets/images/setting.svg'),
+                          SizedBox(
+                            height: 20,
+                          )
                         ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ]),
+                ],
+              ),
             ),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }
@@ -201,9 +190,7 @@ class OptionSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        onTap();
-      },
+      onTap: () => onTap(),
       child: Padding(
         padding: const EdgeInsets.only(top: 32.0, right: 16, left: 16),
         child: Stack(
@@ -224,15 +211,15 @@ class OptionSelector extends StatelessWidget {
                     SvgPicture.asset(
                       'assets/images/polygon.svg',
                       fit: BoxFit.fill,
-                      width: 300,
+                      width: MediaQuery.of(context).size.width / 1.4,
                     ),
                     SizedBox(
-                      width: 243,
+                      width: MediaQuery.of(context).size.width / 1.8,
                       child: Column(
                         children: [
                           Text(
                             title,
-                            textAlign: TextAlign.right,
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -245,7 +232,7 @@ class OptionSelector extends StatelessWidget {
                           ),
                           Text(
                             desc,
-                            textAlign: TextAlign.right,
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white.withOpacity(0.75),
                               fontSize: 13,

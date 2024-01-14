@@ -1,5 +1,4 @@
 import 'package:enigma/classes/logic/contdis/LessonReader.dart';
-import 'package:enigma/modules/levels_screen/cubit/levels_screen_cubit.dart';
 import 'package:enigma/screens/LevelSpecifierScreeen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,18 +7,19 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../shared/components/components.dart';
 import '../NumBackground.dart';
+import 'cubit/educational_screens_cubit.dart';
 
-class LevelsScreen extends StatelessWidget {
-  const LevelsScreen({super.key});
+class EducationalScreens extends StatelessWidget {
+  const EducationalScreens({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LevelsScreenCubit>(
-      create: (context) => LevelsScreenCubit(),
-      child: BlocConsumer<LevelsScreenCubit, LevelsScreenState>(
+    return BlocProvider<EducationalScreensCubit>(
+      create: (context) => EducationalScreensCubit(),
+      child: BlocConsumer<EducationalScreensCubit, EducationalScreensState>(
         listener: (context, state) {},
         builder: (context, state) {
-          var cubit = LevelsScreenCubit.get(context);
+          var cubit = EducationalScreensCubit.get(context);
 
           return Scaffold(
             appBar: AppBar(
@@ -35,7 +35,7 @@ class LevelsScreen extends StatelessWidget {
               ),
               centerTitle: true,
               title: const Text(
-                'مرحبا  اسم المستخدم',
+                'مرحباً، اسم المستخدم',
                 style: TextStyle(
                     fontFamily: 'Cairo',
                     color: Color(0xffF9F9F9),
@@ -97,7 +97,9 @@ class LevelsScreen extends StatelessWidget {
   }
 }
 
-class Section1 extends StatelessWidget {
+class LevelsSection extends StatelessWidget {
+  const LevelsSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -148,7 +150,9 @@ class Section1 extends StatelessWidget {
   }
 }
 
-class Section2 extends StatelessWidget {
+class ProgressSection extends StatelessWidget {
+  const ProgressSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -157,7 +161,7 @@ class Section2 extends StatelessWidget {
           height: 16,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: progressCard(
               title: 'اسم خاص بالتدريب',
               subtitle: 'منذ ساعتين وخمس دقائق',
@@ -170,14 +174,16 @@ class Section2 extends StatelessWidget {
   }
 }
 
-class Section3 extends StatelessWidget {
+class DoneSection extends StatelessWidget {
+  const DoneSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
         children: [
           const SizedBox(
-            height: 20,
+            height: 16,
           ),
           Expanded(
             child: Container(
@@ -239,7 +245,8 @@ class Section3 extends StatelessWidget {
                     ),
                     doneCard(
                         color: Colors.blue,
-                        image: 'assets/images/done_screen_test_image.svg',
+                        image:
+                            'assets/images/illustration/done_screen_image_1.svg',
                         stars: 3,
                         title: 'عبارة وصفية',
                         subtitle:

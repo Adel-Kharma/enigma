@@ -1,19 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:ui';
-
-import 'package:enigma/classes/level_progress.dart';
-import 'package:enigma/classes/logic/contdis/Lesson.dart';
 import 'package:enigma/classes/logic/contdis/LessonReader.dart';
 import 'package:enigma/classes/logic/contdis/Topic.dart';
-import 'package:enigma/modules/lesson_test_screen/lesson_test_screen.dart';
-import 'package:enigma/screens/widgets/closed_section_card.dart';
 import 'package:enigma/screens/widgets/exercise_card.dart';
 import 'package:enigma/screens/widgets/opened_section_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:intrinsic_grid_view/intrinsic_grid_view.dart';
 
 import '../shared/cubit/level_specifier/cubit.dart';
@@ -59,7 +52,7 @@ class LevelSpecifierScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 20.0),
                         child: SvgPicture.asset(
                           'assets/images/offercard.svg',
-                          height: 240,
+                          height: 260,
                           allowDrawingOutsideViewBox: true,
                           fit: BoxFit.fill,
                         ),

@@ -37,7 +37,7 @@ class ExerciseCard extends StatelessWidget {
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
                 shadows: [
-                  BoxShadow(
+                  const BoxShadow(
                       color: Color(0x66000000),
                       blurRadius: 8,
                       spreadRadius: 0.04,
@@ -46,10 +46,10 @@ class ExerciseCard extends StatelessWidget {
                       color: color,
                       blurRadius: 0,
                       spreadRadius: 0.04,
-                      offset: Offset(4, 4)),
+                      offset: const Offset(4, 4)),
                 ],
                 color: Colors.blueGrey,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(16),
                   ),
@@ -64,7 +64,7 @@ class ExerciseCard extends StatelessWidget {
                         image: AssetImage(imagepath),
                         fit: BoxFit.cover,
                       ),
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(16),
                         ),
@@ -101,7 +101,7 @@ class ExerciseCard extends StatelessWidget {
                             children: [
                               Text(
                                 title,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color(0xFFF9F9F9),
                                   fontSize: 13,
                                   fontFamily: 'Cairo',

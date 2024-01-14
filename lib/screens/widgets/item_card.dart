@@ -82,7 +82,7 @@ class ItemCard extends StatelessWidget {
                     textAlign: TextAlign.right,
                     style: const TextStyle(color: Colors.black38),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Padding(

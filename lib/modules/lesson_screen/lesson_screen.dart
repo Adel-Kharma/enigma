@@ -3,13 +3,12 @@ import 'package:enigma/modules/lesson_screen/cubit/lesson_screen_cubit.dart';
 import 'package:enigma/modules/lesson_test_screen/cubit/lesson_test_cubit.dart';
 import 'package:enigma/modules/lesson_test_screen/cubit/lesson_test_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class LessonScreen extends StatelessWidget {
-  LessonScreen({super.key, required this.pages});
+  const LessonScreen({super.key, required this.pages});
 
   final List<lesson_page.Page> pages;
 
@@ -28,7 +27,7 @@ class LessonScreen extends StatelessWidget {
               child: Scaffold(
                 backgroundColor: const Color(0xffFFFFFF),
                 body: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Stack(
                     children: [
                       PageView.builder(
@@ -36,14 +35,15 @@ class LessonScreen extends StatelessWidget {
                         controller: cubit.controller,
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
-                            if (true) {
-                              if (!cubit.isLast) {
+                            if (!cubit.isLast) {
+                              if (cubit.sectionNumberToShow == 5) {
                                 cubit.controller.nextPage(
                                     duration: const Duration(milliseconds: 600),
                                     curve: Curves.linearToEaseOut);
+                                cubit.sectionNumberToShow = 0;
+                              } else {
+                                cubit.showText(5);
                               }
-                            } else {
-                              cubit.showText(1);
                             }
                           },
                           child: BlocProvider<LessonTestCubit>(
@@ -67,41 +67,48 @@ class LessonScreen extends StatelessWidget {
                       ),
                       Container(
                         color: const Color(0xffFFFFFF),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            SmoothPageIndicator(
-                              controller: cubit.controller,
-                              count: cubit.numberOfPages,
-                              effect: const ScrollingDotsEffect(
-                                dotHeight: 10,
-                                dotWidth: 32,
-                                dotColor: Color(0xffC7D3EB),
-                                activeDotColor: Color(0xff2196F3),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                              backgroundColor:
+                                                  const Color(0xFFF9F9F9),
+                                              shape: OutlineInputBorder(
+                                                  borderSide: BorderSide.none,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          16)),
+                                              content: const SizedBox(
+                                                height: 120,
+                                                child: Center(
+                                                    child:
+                                                        Text('بكير تنهي هلأ')),
+                                              ),
+                                            ));
+                                  },
+                                  child: SvgPicture.asset(
+                                      'assets/images/illustration/exit.svg')),
+                              SmoothPageIndicator(
+                                controller: cubit.controller,
+                                count: cubit.numberOfPages,
+                                effect: const ScrollingDotsEffect(
+                                  dotHeight: 10,
+                                  dotWidth: 32,
+                                  dotColor: Color(0xffC7D3EB),
+                                  activeDotColor: Color(0xff2196F3),
+                                ),
                               ),
-                            ),
-                            GestureDetector(
-                                onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                            shape: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(16)),
-                                            content: const SizedBox(
-                                              height: 120,
-                                              child: Center(
-                                                  child: Text('بكير تنهي هلأ')),
-                                            ),
-                                          ));
-                                },
-                                child: SvgPicture.asset(
-                                    'assets/images/illustration/exit.svg')),
-                          ],
+                              const SizedBox(
+                                width: 24,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -143,7 +150,7 @@ Widget sectionText(
     );
 
 class LessonScreenPage extends StatelessWidget {
-  LessonScreenPage({
+  const LessonScreenPage({
     super.key,
     required this.cubit,
     required this.page,
