@@ -21,7 +21,6 @@ class Practice {
           .name
           .toString()
           .replaceAll('\n', '');
-      ;
       String text = document.children[0].childElements
           .elementAt(i)
           .text
@@ -72,7 +71,7 @@ class Practice {
         Text(
           'السؤال رقم  ($num)',
           textAlign: TextAlign.right,
-          style: TextStyle(
+          style: const TextStyle(
             color: Color(0xFF181C71),
             fontSize: 20,
             fontFamily: 'Cairo',
@@ -82,7 +81,7 @@ class Practice {
           ),
         ),
         list[0],
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         Column(

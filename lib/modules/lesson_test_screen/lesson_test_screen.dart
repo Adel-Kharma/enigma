@@ -1,6 +1,5 @@
 import 'package:enigma/classes/logic/contdis/Practice.dart';
 import 'package:enigma/modules/lesson_test_screen/cubit/lesson_test_cubit.dart';
-import 'package:enigma/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -186,7 +185,7 @@ class LessonTestScreen extends StatelessWidget {
                           height: 45.27,
                           decoration: ShapeDecoration(
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(
+                              side: const BorderSide(
                                   width: 1, color: Color(0xFF898bb5)),
                               borderRadius: BorderRadius.circular(59.05),
                             ),
@@ -208,7 +207,7 @@ class LessonTestScreen extends StatelessWidget {
                               ),
                               Text(
                                 '${1}/${practices.length}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color(0xFF181C71),
                                   fontSize: 15.75,
                                   fontFamily: 'Montserrat',
@@ -216,7 +215,7 @@ class LessonTestScreen extends StatelessWidget {
                                   height: 0,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 8,
                               )
                             ],

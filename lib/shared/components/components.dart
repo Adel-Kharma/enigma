@@ -217,6 +217,8 @@ Widget progressCard({
                         color: Color(0xff181C71),
                         fontSize: 13,
                         fontWeight: FontWeight.bold),
+                    maxLines: 1,
+                    overflow: TextOverflow.fade,
                   ),
                   const Icon(
                     Icons.arrow_forward_ios_rounded,

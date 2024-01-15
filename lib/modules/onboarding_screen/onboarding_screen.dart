@@ -57,7 +57,7 @@ class OnboardingScreen extends StatelessWidget {
                     child: TextButton(
                       onPressed: () {
                         cubit.controller.animateToPage(2,
-                            duration: Duration(milliseconds: 300),
+                            duration: const Duration(milliseconds: 300),
                             curve: Curves.easeInOut);
                       },
                       style: TextButton.styleFrom(

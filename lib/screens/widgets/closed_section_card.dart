@@ -14,7 +14,7 @@ class ClosedSection extends StatelessWidget {
           alignment: Alignment.centerRight,
           height: 48,
           decoration: ShapeDecoration(
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               begin: Alignment(1.00, 0.02),
               end: Alignment(-1, -0.02),
               colors: [Color(0xFF1A6EFC), Color(0xCC0961F5)],
@@ -29,7 +29,7 @@ class ClosedSection extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 18, left: 8),
                 child: SvgPicture.asset('assets/images/locked.svg'),
               ),
-              Text(
+              const Text(
                 'هذا الدرس مقفل',
                 textAlign: TextAlign.right,
                 style: TextStyle(

@@ -1,11 +1,9 @@
-import 'package:enigma/modules/onboarding_screen/onboarding_screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
 import 'screens/HomePage.dart';
-import 'dart:async' show Future;
-import 'package:flutter/services.dart' show rootBundle;
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +13,12 @@ void initLessons() async {
   await rootBundle
       .loadString('assets/texts/lesson1.xml')
       .then((value) => MyApp.roro = value);
-  print('object==============');
-  print(MyApp.roro);
+  if (kDebugMode) {
+    print('object==============');
+  }
+  if (kDebugMode) {
+    print(MyApp.roro);
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -36,25 +38,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     initLessons();
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        systemNavigationBarColor: Colors.white,
+      const SystemUiOverlayStyle(
+        statusBarColor: Color(0xFFF9F9F9),
+        systemNavigationBarColor: Color(0xFFF9F9F9),
         statusBarIconBrightness: Brightness.dark,
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Enigma',
-      localizationsDelegates: const [
+      localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
+      supportedLocales: [
         Locale('ar', 'AE'),
       ],
-      locale: const Locale('ar', 'AE'),
+      locale: Locale('ar', 'AE'),
       home: HomePage(),
     );
   }
