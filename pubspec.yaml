@@ -45,14 +45,14 @@ dependencies:
   flutter_tex: ^4.0.6
   path_provider: ^2.1.2
   xml: ^6.5.0
-  flutter_launcher_icons: ^0.13.1
+#  flutter_launcher_icons: ^0.13.1
 
-flutter_launcher_icons:
-  android: "launcher_icon"
-  image_path: "assets/images/Enigma icon.png"
-  min_sdk_android: 21
-  adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: "assets/images/Enigma icon.png"
+#flutter_launcher_icons:
+#  android: "launcher_icon"
+#  image_path: "assets/images/Enigma icon.png"
+#  min_sdk_android: 21
+#  adaptive_icon_background: "#ffffff"
+#  adaptive_icon_foreground: "assets/images/Enigma icon.png"
 
 dev_dependencies:
   flutter_test:
