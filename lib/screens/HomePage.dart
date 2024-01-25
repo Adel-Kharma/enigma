@@ -1,13 +1,17 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:math';
+
 import 'package:enigma/modules/NumBackground.dart';
 import 'package:enigma/modules/educational_screens/educational_screens.dart';
+import 'package:enigma/screens/quotes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+   Random random = Random();
+   String randomString = quotes[Random().nextInt(quotes.length)];
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +55,7 @@ class HomePage extends StatelessWidget {
                             SizedBox(
                               width: 180,
                               child: Text(
-                                'لازم تدرس إحتمالات شان ما يصير فيك مثل جماعة ',
+                                'دروس مشان ما تفرش 😅',
                                 textAlign: TextAlign.right,
                                 style: TextStyle(
                                   color: Color(0xFFF9F9F9),
@@ -124,16 +128,50 @@ class HomePage extends StatelessWidget {
                                     width: MediaQuery.of(context).size.width,
                                   ),
                                 ),
-                                Text(
-                                  'من جد وجد',
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontFamily: 'Cairo',
-                                    fontWeight: FontWeight.w700,
+
+                                SizedBox(
+                                  height: 170,
+                                  width: 340,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          '#هل_تعلم',
+                                          textAlign: TextAlign.right,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontFamily: 'Cairo',
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      Text(
+                                        randomString,
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontFamily: 'Cairo',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      Center(
+                                        child: Text(
+                                          '#طرائف_ومعلوماتEngima 😁',
+                                          textAlign: TextAlign.right,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontFamily: 'Cairo',
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  overflow: TextOverflow.ellipsis,
                                 )
                               ],
                             ),
