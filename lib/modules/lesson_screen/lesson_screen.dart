@@ -24,102 +24,105 @@ class LessonScreen extends StatelessWidget {
             cubit.numberOfPages = pages.length;
 
             return SafeArea(
-              child: Scaffold(
-                backgroundColor: const Color(0xffFFFFFF),
-                body: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 16.0,
-                    bottom: 16.0,
-                  ),
-                  child: Stack(
-                    children: [
-                      PageView.builder(
-                        onPageChanged: cubit.onPageChanged,
-                        controller: cubit.controller,
-                        itemBuilder: (context, index) => GestureDetector(
-                          onTap: () {
-                            if (!cubit.isLast) {
-                              if (cubit.sectionNumberToShow == 0) {
-                                cubit.controller.nextPage(
-                                    duration: const Duration(milliseconds: 600),
-                                    curve: Curves.linearToEaseOut);
-                                cubit.sectionNumberToShow = 0;
-                              } else {
-                                cubit.showText(5);
+              child: MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                child: Scaffold(
+                  backgroundColor: const Color(0xffFFFFFF),
+                  body: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 16.0,
+                      bottom: 16.0,
+                    ),
+                    child: Stack(
+                      children: [
+                        PageView.builder(
+                          onPageChanged: cubit.onPageChanged,
+                          controller: cubit.controller,
+                          itemBuilder: (context, index) => GestureDetector(
+                            onTap: () {
+                              if (!cubit.isLast) {
+                                if (cubit.sectionNumberToShow == 0) {
+                                  cubit.controller.nextPage(
+                                      duration: const Duration(milliseconds: 600),
+                                      curve: Curves.linearToEaseOut);
+                                  cubit.sectionNumberToShow = 0;
+                                } else {
+                                  cubit.showText(5);
+                                }
                               }
-                            }
-                          },
-                          child: BlocProvider<LessonTestCubit>(
-                            create: (context) => LessonTestCubit(),
-                            child:
-                                BlocConsumer<LessonTestCubit, LessonTestState>(
-                              listener: (context, state) {},
-                              builder: (context, state) {
-                                LessonTestCubit testCubit =
-                                    LessonTestCubit.get(context);
-                                testCubit
-                                    .prepareOrders(cubit.components!.length);
-                                return LessonScreenPage(
-                                  cubit: cubit,
-                                  page: cubit.components![index].getPage(
-                                      testCubit, context, testCubit.randomI),
-                                );
-                              },
+                            },
+                            child: BlocProvider<LessonTestCubit>(
+                              create: (context) => LessonTestCubit(),
+                              child:
+                                  BlocConsumer<LessonTestCubit, LessonTestState>(
+                                listener: (context, state) {},
+                                builder: (context, state) {
+                                  LessonTestCubit testCubit =
+                                      LessonTestCubit.get(context);
+                                  testCubit
+                                      .prepareOrders(cubit.components!.length);
+                                  return LessonScreenPage(
+                                    cubit: cubit,
+                                    page: cubit.components![index].getPage(
+                                        testCubit, context, testCubit.randomI),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          itemCount: pages.length,
+                        ),
+                        Container(
+                          color: const Color(0xffFFFFFF),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                GestureDetector(
+                                    onTap: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) => PopScope(
+                                                canPop: false,
+                                                child: AlertDialog(
+                                                  backgroundColor:
+                                                      const Color(0xFFF9F9F9),
+                                                  shape: OutlineInputBorder(
+                                                      borderSide: BorderSide.none,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              16)),
+                                                  content: const SizedBox(
+                                                    height: 120,
+                                                    child: Center(
+                                                        child: Text(
+                                                            'بكير تنهي هلأ')),
+                                                  ),
+                                                ),
+                                              ));
+                                    },
+                                    child: SvgPicture.asset(
+                                        'assets/images/illustration/exit.svg')),
+                                SmoothPageIndicator(
+                                  controller: cubit.controller,
+                                  count: cubit.numberOfPages,
+                                  effect: const ScrollingDotsEffect(
+                                    dotHeight: 10,
+                                    dotWidth: 32,
+                                    dotColor: Color(0xffC7D3EB),
+                                    activeDotColor: Color(0xff2196F3),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 24,
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        itemCount: pages.length,
-                      ),
-                      Container(
-                        color: const Color(0xffFFFFFF),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                  onTap: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) => PopScope(
-                                              canPop: false,
-                                              child: AlertDialog(
-                                                backgroundColor:
-                                                    const Color(0xFFF9F9F9),
-                                                shape: OutlineInputBorder(
-                                                    borderSide: BorderSide.none,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            16)),
-                                                content: const SizedBox(
-                                                  height: 120,
-                                                  child: Center(
-                                                      child: Text(
-                                                          'بكير تنهي هلأ')),
-                                                ),
-                                              ),
-                                            ));
-                                  },
-                                  child: SvgPicture.asset(
-                                      'assets/images/illustration/exit.svg')),
-                              SmoothPageIndicator(
-                                controller: cubit.controller,
-                                count: cubit.numberOfPages,
-                                effect: const ScrollingDotsEffect(
-                                  dotHeight: 10,
-                                  dotWidth: 32,
-                                  dotColor: Color(0xffC7D3EB),
-                                  activeDotColor: Color(0xff2196F3),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 24,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
