@@ -1,12 +1,15 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:math';
+
+import 'package:enigma/main.dart';
 import 'package:enigma/modules/NumBackground.dart';
 import 'package:enigma/modules/educational_screens/educational_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -124,16 +127,20 @@ class HomePage extends StatelessWidget {
                                     width: MediaQuery.of(context).size.width,
                                   ),
                                 ),
-                                Text(
-                                  'من جد وجد',
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontFamily: 'Cairo',
-                                    fontWeight: FontWeight.w700,
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width - 64,
+                                  child: Text(
+                                    MyApp.wisdom.replaceAll('\n', ''),
+                                    textAlign: TextAlign.center,
+                                    softWrap: true,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontFamily: 'Cairo',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    //overflow: TextOverflow.ellipsis,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
                                 )
                               ],
                             ),

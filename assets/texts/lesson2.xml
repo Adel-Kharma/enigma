@@ -1,0 +1,105 @@
+<lesson title="العمليات في الاحتمالات" prc-title="تمارين المجموعات">
+    <topics>
+        <topic des="الاجتماع والتقاطع والفرق والمتمم">العمليات على المجموعات
+        </topic>
+    </topics>
+    <pages>
+        <page>
+            <h1>العمليات على المجموعات:</h1>
+            <h2>الاجتماع والتقاطع والفرق والمتمم:</h2>
+            <text>الاجتماع: هو مجموعة العناصر التي تنتمي الى A أو B (المشتركة وغير المشتركة)</text>
+            <lax>A\cup B = \left\{x∈ Ω x∈A∨x∈B\right\}</lax>
+            <img src="008" />
+            <text>التقاطع: هو مجموعة العناصر التي تنتمي الى A وB معاً (العناصر المشتركة)</text>
+            <lax>A\cap B = \left\{x∈Ω x∈A∧x∈B\right\}</lax>
+            <img src="009" />
+            <text>الفرق: مجموعة العناصر التي تنتمي الى A ولا تنتمي الى B (ويسمى المكمل النسبي).</text>
+            <lax>A - B = \left\{x∈Ω x∈A∧x∉B\right\}</lax>
+            <img src="010" />
+            <text>المتمم (المكمل المطلق): يرمز له ب A متمم المجموعة A وهو مجموعة العناصر التي لا تنتمي الى A ولكنها تنتمي الى Ω.</text>
+            <lax>\overline{A} = \left\{x∈Ω ∧ x∉A\right\}</lax>
+            <img src="011" />
+        </page>
+        <qpage>
+            <group>
+                <text>ليكن لدينا المجموعات الآتية:</text>
+                <lax>A=\left\{\ 1,\ 2,\ldots,8,\ 9\right\}</lax>
+                <lax>B=\left\{\ 2,\ 4,\ 6,8\ \right\}</lax>
+                <lax>C=\left\{\ 1,\ 3,\ 5,\ 7,\ 9\right\}</lax>
+                <lax>D=\left\{3,\ 4,\ 5\right\}</lax>
+                <lax>E=\left\{\ 3,\ 5\ \right\}</lax>
+                <text>إن حل الجملة التالية هي المجموعة:</text>
+                <text>إن (X⊂D) و (X⊄B) هي المجموعة:</text>
+            </group>
+            <text>E</text>
+            <text>D</text>
+            <text>C</text>
+            <text>E و D</text>
+        </qpage>
+        <qpage>
+            <group>
+                <text>إن</text>
+                <lax>\ X\subset D\ and \ X\subset B</lax>
+                <text>هي المجموعة:</text>
+            </group>
+            <text>A</text>
+            <text>D</text>
+            <text>C</text>
+            <text>كل ما سبق خاطئ</text>
+        </qpage>
+    </pages>
+    <practices>
+        <practice>
+            <group>
+                <text>ليكن لدينا المجموعات الآتية:</text>
+                <lax>Ω= 1,2,3,4,5,6,7,8,9</lax>
+                <lax>A=\left\{\ 1,\ 2,\ 3,\ 4\right\}</lax>
+                <lax>B=\left\{\ 2,\ 4,\ 6,8\ \right\}</lax>
+                <lax>C=\left\{\ 3,\ 4,\ 5,\ 6\ \right\}</lax>
+                <text>:تساويA∪B إن</text>
+            </group>
+            <lax>A\bigcup B=\left\{1,\ 2,\ 3,\ 4,\ 6,\ 8\right\}</lax>
+            <lax>A\bigcup B=\left\{,3,4,5،6\right\}</lax>
+            <lax>A\bigcup B=\left\{1,2,,2 3,4,4,6,8،\right\}</lax>
+            <lax>A\bigcup B=\left\{\right\}</lax>
+        </practice>
+        <practice>
+            <text>إن A∪C تساوي:</text>
+            <lax>A\cup C=\left\{1,\ 2,\ 3,\ 4,\ 5,\ 6\ \right\}</lax>
+            <lax>A\cup C=\left\{1,\ 2,\ 3,\ 4\right\}</lax>
+            <lax>A\cup C=\left\{1,\ 2,\ 4,\ 5,\ 6\ \right\}</lax>
+            <lax>A\cup C=\left\{\ 3,\ 4,\ 5,\ 6\ \right\}</lax>
+        </practice>
+        <practice>
+            <text>إن A∩C تساوي:</text>
+            <lax>A\cap C=\left\{3,\ 4\right\}</lax>
+            <lax>A\cup C=\left\{1,\ 2,\ 3,\ 4,\ 5,\ 6\ \right\}</lax>
+            <lax>A\cap C=\left\{2,1,3,\ 4,5,6\right\}</lax>
+            <lax>A\cap C=\left[3,\ 4\right]</lax>
+        </practice>
+        <practice>
+            <group>
+                <text>إن القيمة التالية تساوي:</text>
+                <lax>\overline{B}</lax>
+            </group>
+            <lax>\overline{B}=\left\{1,\ 3,\ 5,\ 7,\ 9\right\}</lax>
+            <lax>\overline{B}=\left\{1,\ 3,\ 7,\ 9\right\}</lax>
+            <lax>\overline{B}=\left\{1,2,3,4\right\}</lax>
+            <lax>\overline{B}=\left\{2,\ 4,\ 6,\ 7,\ 9\right\}</lax>
+        </practice>
+        <practice>
+            <lax>= \overline{\left(A\cap C\right)}</lax>
+            <lax>\overline{\left(A\cap C\right)}=\left\{1,\ 2,\ 5,\ 6,\ 7,\ 8,\ 9\ \right\}</lax>
+            <lax>\overline{\left(A\cap C\right)}=\left\{1,\ 2,\ 3,4,5,\ 6,\ \right\}</lax>
+            <lax>\overline{\left(A\cap C\right)}=\left\{1,\ 2,\ 7,\ 8,\ 9\ \right\}</lax>
+            <text>كل ماسبق خاطئ</text>
+        </practice>
+        <practice>
+            <text>إن B - C يساوي:</text>
+            <lax>B-C=\left\{2,\ 8\right\}</lax>
+            <lax>B-C=\left\{2,\ 4,8\right\}</lax>
+            <lax>B-C=\left\{3,5,6\right\}</lax>
+            <lax>B-C=\left\{2,4,6,8\right\}</lax>
+        </practice>
+    </practices>
+</lesson>

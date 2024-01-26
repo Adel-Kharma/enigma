@@ -2,7 +2,7 @@ import 'package:xml/xml.dart';
 import 'dart:io';
 
 void main() {
-  final file = File('./assets/texts/lesson1.xml');
+  final file = File('./assets/texts/lesson2.xml');
   /*ByteData bytes = rootBundle.load(key)
       */
   print(file.readAsString());
@@ -15,16 +15,19 @@ void main() {
   print(document.children[0]
       .getElement('pages')
       ?.childElements
-      .elementAt(5)
-      .name);
+      .elementAt(1)
+      .childElements
+      .elementAt(0)
+      .childElements
+      .elementAt(0));
   int? count = document.children[0].getElement('pages')?.childElements.length;
-  for (int i = 0; i < count!; i++) {
+  /*for (int i = 0; i < count!; i++) {
     print(document.children[0]
         .getElement('pages')
         ?.childElements
         .elementAt(i)
         .toString());
-  }
+  }*/
   print(document.rootElement.name);
 
   //print(document.children[0].childElements.elementAt(3).getAttribute('src'));

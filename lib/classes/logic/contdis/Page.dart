@@ -1,9 +1,9 @@
 import 'package:enigma/modules/lesson_test_screen/cubit/lesson_test_cubit.dart';
 import 'package:enigma/shared/components/components.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:xml/xml.dart';
-
 
 class Page {
   String content;
@@ -17,8 +17,8 @@ class Page {
 
   //Widget getLecture() {}
 
-  Widget getPage(LessonTestCubit cubit, BuildContext context,
-      List<int> randomI) {
+  Widget getPage(LessonTestCubit cubit, BuildContext context, List<int> randomI,
+      {int pageIndex = 0}) {
     String rootName = document.rootElement.name.toString();
     List<Widget> list = [];
 
@@ -51,19 +51,78 @@ class Page {
           case 'img':
             list.add(Image(
               image: AssetImage(
-                  'assets/res/${document.children[0].childElements.elementAt(i)
-                      .getAttribute('src')
-                      .toString()}.png'),
+                  'assets/res/${document.children[0].childElements.elementAt(i).getAttribute('src').toString()}.png'),
+            ));
+            break;
+          case 'lax':
+            list.add(Align(
+              child: Localizations.override(
+                  context: context,
+                  locale: const Locale('en'),
+                  child: Math.tex(text)),
+            ));
+            break;
+          case 'group':
+            int len = document.children[0].childElements
+                .elementAt(i)
+                .childElements
+                .length;
+            List<Widget> smLis = [];
+            for (int j = 0; j < len; j++) {
+              String namee = document.children[0].childElements
+                  .elementAt(i)
+                  .childElements
+                  .elementAt(j)
+                  .name
+                  .toString()
+                  .replaceAll('\n', '');
+              String textt = document.children[0].childElements
+                  .elementAt(i)
+                  .childElements
+                  .elementAt(j)
+                  .text
+                  .toString()
+                  .replaceAll('\n', '');
+              switch (namee) {
+                case 'text':
+                  smLis.add(Text(
+                    textt,
+                    textAlign: TextAlign.right,
+                    style: const TextStyle(
+                        color: Color(0xff000000),
+                        fontSize: 15,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: -0.39),
+                  ));
+                  break;
+                case 'lax':
+                  smLis.add(Align(
+                    child: Localizations.override(
+                        context: context,
+                        locale: const Locale('en'),
+                        child: Math.tex(textt)),
+                  )); //todo prpr
+                  break;
+              }
+            }
+            list.add(Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: smLis,
             ));
             break;
         }
       }
 
       List<Widget> sourceAnswers = [
-        choiceCardForWidget(answer: list[1], index: 1, cubit: cubit),
-        choiceCardForWidget(answer: list[2], index: 2, cubit: cubit),
-        choiceCardForWidget(answer: list[3], index: 3, cubit: cubit),
-        choiceCardForWidget(answer: list[4], index: 4, cubit: cubit),
+        choiceCardForWidget(
+            answer: list[1], index: 1, cubit: cubit, pageIndex: pageIndex),
+        choiceCardForWidget(
+            answer: list[2], index: 2, cubit: cubit, pageIndex: pageIndex),
+        choiceCardForWidget(
+            answer: list[3], index: 3, cubit: cubit, pageIndex: pageIndex),
+        choiceCardForWidget(
+            answer: list[4], index: 4, cubit: cubit, pageIndex: pageIndex),
       ];
       List<Widget> randomized = [];
 
@@ -90,7 +149,7 @@ class Page {
                   ),
                 ),
                 builder: (_) {
-                  if (cubit.chosenAnswer == 1) {
+                  if (cubit.chosenAnswer[pageIndex] == 1) {
                     return bottomSheetCelebration(context);
                   } else {
                     return bottomSheetBahdalation(context);
@@ -218,11 +277,81 @@ class Page {
           case 'img':
             list.add(Image(
               image: AssetImage(
-                  'assets/res/${document.children[0].childElements.elementAt(i)
-                      .getAttribute('src')}.png'),
+                  'assets/res/${document.children[0].childElements.elementAt(i).getAttribute('src')}.png'),
             ));
             list.add(const SizedBox(
               height: 8,
+            ));
+            break;
+          case 'lax':
+            list.add(Align(
+              child: Localizations.override(
+                context: context,
+                locale: const Locale('en'),
+                child: Math.tex(
+                  text,
+                  textStyle: const TextStyle(
+                      fontFamily: 'Cairo', locale: Locale('fr', 'CA')),
+                ),
+              ),
+            ));
+
+            /*list.add(TeXView(
+                child: TeXViewInkWell(
+              child: TeXViewDocument(text,
+                  style: TeXViewStyle(
+                      textAlign: TeXViewTextAlign.right,
+                      fontStyle: TeXViewFontStyle(fontFamily: 'Cairo'))),
+              id: 'id_0',
+            )));*/
+            break;
+          case 'group':
+            int len = document.children[0].childElements
+                .elementAt(i)
+                .childElements
+                .length;
+            List<Widget> smLis = [];
+            for (int j = 0; j < len; j++) {
+              String namee = document.children[0].childElements
+                  .elementAt(i)
+                  .childElements
+                  .elementAt(j)
+                  .name
+                  .toString()
+                  .replaceAll('\n', '');
+              String textt = document.children[0].childElements
+                  .elementAt(i)
+                  .childElements
+                  .elementAt(j)
+                  .text
+                  .toString()
+                  .replaceAll('\n', '');
+              switch (namee) {
+                case 'text':
+                  smLis.add(Text(
+                    textt,
+                    textAlign: TextAlign.right,
+                    style: const TextStyle(
+                        color: Color(0xff000000),
+                        fontSize: 15,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: -0.39),
+                  ));
+                  break;
+                case 'lax':
+                  smLis.add(Align(
+                    child: Localizations.override(
+                        context: context,
+                        locale: const Locale('en'),
+                        child: Math.tex(textt)),
+                  )); //todo prpr
+                  break;
+              }
+            }
+            list.add(Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: smLis,
             ));
             break;
         }
@@ -243,148 +372,146 @@ class Page {
   Widget bottomSheetCelebration(BuildContext context) {
     return Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const SizedBox(
+          height: 16,
+        ),
+        SvgPicture.asset('assets/images/illustration/iamproundofyou.svg'),
+        const Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
-              height: 16,
+            Text(
+              'إجابة صحيحة!',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: Color(0xFF00BC12),
+                fontSize: 20,
+                fontFamily: 'Cairo',
+                fontWeight: FontWeight.w800,
+                height: 0,
+                letterSpacing: -0.60,
+              ),
             ),
-            SvgPicture.asset('assets/images/illustration/iamproundofyou.svg'),
-            const Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'إجابة صحيحة!',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    color: Color(0xFF00BC12),
-                    fontSize: 20,
-                    fontFamily: 'Cairo',
-                    fontWeight: FontWeight.w800,
-                    height: 0,
-                    letterSpacing: -0.60,
-                  ),
+            Text(
+              'هذا رائع، لا شك بأنك نيرد!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0x7F00BC13),
+                fontSize: 13,
+                fontFamily: 'Cairo',
+                fontWeight: FontWeight.w700,
+                height: 0,
+                letterSpacing: -0.39,
+              ),
+            )
+          ],
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              height: 32,
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4),
+              decoration: ShapeDecoration(
+                color: const Color(0xFF00BC12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                Text(
-                  'هذا رائع، لا شك بأنك نيرد!',
-                  textAlign: TextAlign.center,
+              ),
+              child: const Center(
+                child: Text(
+                  'استمر في التقدّم',
                   style: TextStyle(
-                    color: Color(0x7F00BC13),
+                    color: Colors.white,
                     fontSize: 13,
                     fontFamily: 'Cairo',
                     fontWeight: FontWeight.w700,
                     height: 0,
-                    letterSpacing: -0.39,
-                  ),
-                )
-              ],
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  height: 32,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 32, vertical: 4),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFF00BC12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'استمر في التقدّم',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 13,
-                        fontFamily: 'Cairo',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
-                    ),
                   ),
                 ),
               ),
-            )
-          ],
-        ));
+            ),
+          ),
+        )
+      ],
+    ));
   }
 
   Widget bottomSheetBahdalation(BuildContext context) {
     return Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const SizedBox(
+          height: 16,
+        ),
+        SvgPicture.asset('assets/images/illustration/wornganswer.svg'),
+        const Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
-              height: 16,
+            Text(
+              'إجابة خاطئة!',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: Color(0xFFFF4B4C),
+                fontSize: 20,
+                fontFamily: 'Cairo',
+                fontWeight: FontWeight.w800,
+                height: 0,
+                letterSpacing: -0.60,
+              ),
             ),
-            SvgPicture.asset('assets/images/illustration/wornganswer.svg'),
-            const Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'إجابة خاطئة!',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    color: Color(0xFFFF4B4C),
-                    fontSize: 20,
-                    fontFamily: 'Cairo',
-                    fontWeight: FontWeight.w800,
-                    height: 0,
-                    letterSpacing: -0.60,
-                  ),
+            Text(
+              'لا تقلق، فكلنا نخطئ في النهاية',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0x7FFF4B4C),
+                fontSize: 13,
+                fontFamily: 'Cairo',
+                fontWeight: FontWeight.w700,
+                height: 0,
+                letterSpacing: -0.39,
+              ),
+            )
+          ],
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              height: 32,
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4),
+              decoration: ShapeDecoration(
+                color: const Color(0xFFFF4B4C),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                Text(
-                  'لا تقلق، فكلنا نخطئ في النهاية',
-                  textAlign: TextAlign.center,
+              ),
+              child: const Center(
+                child: Text(
+                  'استمر في التقدّم',
                   style: TextStyle(
-                    color: Color(0x7FFF4B4C),
+                    color: Colors.white,
                     fontSize: 13,
                     fontFamily: 'Cairo',
                     fontWeight: FontWeight.w700,
                     height: 0,
-                    letterSpacing: -0.39,
-                  ),
-                )
-              ],
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  height: 32,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 32, vertical: 4),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFFF4B4C),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'استمر في التقدّم',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 13,
-                        fontFamily: 'Cairo',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
-                    ),
                   ),
                 ),
               ),
-            )
-          ],
-        ));
+            ),
+          ),
+        )
+      ],
+    ));
   }
 }

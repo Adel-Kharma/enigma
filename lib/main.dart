@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:enigma/classes/wisdom.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,34 +12,32 @@ void main() {
   runApp(const MyApp());
 }
 
-void initLessons() async {
-  await rootBundle
-      .loadString('assets/texts/lesson1.xml')
-      .then((value) => MyApp.roro = value);
-  if (kDebugMode) {
-    print('object==============');
-  }
-  if (kDebugMode) {
-    print(MyApp.roro);
-  }
-}
-
 class MyApp extends StatelessWidget {
-  static String roro = '';
+  static List<String> lessonList = [];
+  static String wisdom = '';
 
   const MyApp({super.key});
 
   // This widget is the root of your application.
 
   void initLessons() async {
-    await rootBundle
-        .loadString('assets/texts/lesson1.xml')
-        .then((value) => MyApp.roro = value);
+    for (int i = 0; i < 7; i++) {
+      await rootBundle
+          .loadString('assets/texts/lesson${i + 1}.xml')
+          .then((value) => MyApp.lessonList.add(value));
+    }
+
+    for (int i = 13; i < 16; i++) {
+      await rootBundle
+          .loadString('assets/texts/lesson${i}.xml')
+          .then((value) => MyApp.lessonList.add(value));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     initLessons();
+    wisdom = Wisdom.getWise();
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: Color(0xFFF9F9F9),
@@ -45,18 +46,19 @@ class MyApp extends StatelessWidget {
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Enigma',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('ar', 'AE'),
+        Locale('en', 'US'),
       ],
-      locale: Locale('ar', 'AE'),
+      locale: const Locale('ar', 'AE'),
       home: HomePage(),
     );
   }

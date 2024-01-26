@@ -491,24 +491,42 @@ Widget choiceCard({
   );
 }
 
-Widget choiceCardForWidget({
-  required Widget answer,
-  required int index,
-  required LessonTestCubit cubit,
-}) {
+Widget choiceCardForWidget(
+    {required Widget answer,
+    required int index,
+    required LessonTestCubit cubit,
+    required int pageIndex}) {
+  Color borderColor;
+
+  if (cubit.revealAns) {
+    if (index == 1) {
+      borderColor = const Color(0xFF00BC12);
+    } else {
+      if (index == cubit.chosenAnswer[pageIndex]) {
+        borderColor = const Color(0xFFFF4B4C);
+      } else {
+        borderColor = const Color(0xffe0e0e0);
+      }
+    }
+  } else {
+    borderColor = (index == cubit.chosenAnswer[pageIndex])
+        ? const Color(0xFF181C71)
+        : const Color(0xffe0e0e0);
+  }
+
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 8.0),
     child: GestureDetector(
       onTap: () {
-        cubit.changeChosenAnswer(index);
+        if (cubit.revealAns == false) {
+          cubit.changeChosenAnswer(index);
+        }
       },
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           border: Border.all(
-            color: (index == cubit.chosenAnswer)
-                ? const Color(0xFF181C71)
-                : const Color(0xffe0e0e0),
+            color: borderColor,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(8),
@@ -517,7 +535,7 @@ Widget choiceCardForWidget({
           mainAxisSize: MainAxisSize.max,
           children: [
             SvgPicture.asset(
-              (index == cubit.chosenAnswer)
+              (index == cubit.chosenAnswer[pageIndex])
                   ? 'assets/images/illustration/chosen_circle.svg'
                   : 'assets/images/illustration/not_chosen_circle.svg',
               width: 16,
@@ -547,7 +565,7 @@ Widget multipleChoiceCard(
     required String answer3,
     required String answer4,
     required LessonTestCubit cubit}) {
-  cubit.chosenAnswer = 0;
+  //cubit.chosenAnswer = 0;
   return Column(
     children: [
       choiceCard(answer: answer1, index: 1, cubit: cubit),
@@ -555,5 +573,137 @@ Widget multipleChoiceCard(
       choiceCard(answer: answer3, index: 3, cubit: cubit),
       choiceCard(answer: answer4, index: 4, cubit: cubit),
     ],
+  );
+}
+
+Widget endPractice(BuildContext context, int all, int corr) {
+  return PopScope(
+    canPop: false,
+    child: AlertDialog(
+      backgroundColor: const Color(0xFFFFFFFF),
+      content: SizedBox(
+        height: 420,
+        width: 420,
+        child: Center(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(
+              height: 16,
+            ),
+            SvgPicture.asset(
+              'assets/images/illustration/complete_course.svg',
+              width: 212,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'أحسنت صنعاً!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xFF4B54FF),
+                    fontSize: 24,
+                    fontFamily: 'Cairo',
+                    fontWeight: FontWeight.w600,
+                    height: 0,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Text(
+                      'النتيجة:',
+                      style: TextStyle(
+                        color: Color(0xFF5D7285),
+                        fontSize: 20,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w400,
+                        height: 0,
+                        letterSpacing: -0.60,
+                      ),
+                    ),
+                    Text(
+                      '$corr/$all',
+                      style: const TextStyle(
+                        color: Color(0xFF5D7285),
+                        fontSize: 20,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w400,
+                        height: 0,
+                        letterSpacing: -0.60,
+                      ),
+                    ),
+                  ],
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  },
+                  highlightColor: const Color(0x354b54ff),
+                  child: ListTile(
+                    title: const Text(
+                      'قم بالعودة لرؤية إجاباتك',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF4B54FF),
+                        fontSize: 16,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w700,
+                        decoration: TextDecoration.underline,
+                        height: 0,
+                      ),
+                    ),
+                    horizontalTitleGap: 0,
+                    trailing: Transform.rotate(
+                      child: Icon(Icons.arrow_back_ios),
+                      angle: 3.14159,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  height: 32,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 4),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFF4B55FF),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'استمر في التقدّم',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 13,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
+        )),
+      ),
+    ),
   );
 }

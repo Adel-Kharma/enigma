@@ -1,5 +1,6 @@
 import 'package:enigma/classes/logic/contdis/Practice.dart';
 import 'package:enigma/modules/lesson_test_screen/cubit/lesson_test_cubit.dart';
+import 'package:enigma/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,6 +22,7 @@ class LessonTestScreen extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = LessonTestCubit.get(context);
+          cubit.prepareOrders(practices.length);
           return Scaffold(
             body: NumBackground(
               child: Stack(
@@ -38,6 +40,7 @@ class LessonTestScreen extends StatelessWidget {
                   ),
                   PageView.builder(
                     itemCount: practices.length,
+                    physics: const NeverScrollableScrollPhysics(),
                     controller: cubit.pageController,
                     itemBuilder: (_, index) => SingleChildScrollView(
                       child: Stack(children: [
@@ -70,43 +73,87 @@ class LessonTestScreen extends StatelessWidget {
                                       height: 70,
                                     ),
                                     practices[index].getPage(
-                                        cubit, cubit.randomI, index + 1),
+                                        cubit,
+                                        cubit.randomTestAns[index],
+                                        index + 1,
+                                        index,
+                                        context),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            if (cubit.chosenAnswer != 0) {}
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            minimumSize: const Size(0, 40),
-                                            backgroundColor:
-                                                const Color(0xff181C71),
-                                          ),
-                                          child: const Text(
-                                            'السؤال السابق',
-                                            style: TextStyle(
-                                              color: Color(0xFFF9F9F9),
-                                              fontSize: 13,
-                                              fontFamily: 'Cairo',
-                                              fontWeight: FontWeight.w700,
-                                              height: 0,
+                                        Opacity(
+                                          opacity: (cubit.index > 0) ? 1 : 0,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              if (cubit.index <= 0) {
+                                                cubit.index = 0;
+                                              } else {
+                                                cubit.prevPage();
+                                              }
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              minimumSize: const Size(0, 40),
+                                              backgroundColor:
+                                                  const Color(0xff181C71),
+                                            ),
+                                            child: const Text(
+                                              'السؤال السابق',
+                                              style: TextStyle(
+                                                color: Color(0xFFF9F9F9),
+                                                fontSize: 13,
+                                                fontFamily: 'Cairo',
+                                                fontWeight: FontWeight.w700,
+                                                height: 0,
+                                              ),
                                             ),
                                           ),
                                         ),
                                         ElevatedButton(
                                           onPressed: () {
-                                            if (cubit.chosenAnswer != 0) {}
+                                            if (cubit.index >=
+                                                practices.length - 1) {
+                                              cubit.index =
+                                                  practices.length - 1;
+                                              cubit.countOfCorrect = 0;
+                                              int coc = 0;
+                                              for (int j = 0;
+                                                  j < cubit.chosenAnswer.length;
+                                                  j++) {
+                                                if (cubit.chosenAnswer[j] == 1)
+                                                  coc++;
+                                              }
+                                              cubit.revealAnswers();
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(
+                                                      builder: (_) {
+                                                return const SafeArea(
+                                                  child: Scaffold(
+                                                    body: Text(''),
+                                                  ),
+                                                );
+                                              }));
+                                              showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (__) => endPractice(
+                                                      __,
+                                                      practices.length,
+                                                      coc));
+                                            } else {
+                                              cubit.nextPage();
+                                            }
                                           },
                                           style: ElevatedButton.styleFrom(
                                             minimumSize: const Size(0, 40),
                                             backgroundColor:
                                                 const Color(0xff181C71),
                                           ),
-                                          child: const Text(
-                                            'السؤال التالي',
-                                            style: TextStyle(
+                                          child: Text(
+                                            cubit.index == practices.length - 1
+                                                ? 'إنهاء الاختبار'
+                                                : 'السؤال التالي',
+                                            style: const TextStyle(
                                               color: Color(0xFFF9F9F9),
                                               fontSize: 13,
                                               fontFamily: 'Cairo',
@@ -197,16 +244,17 @@ class LessonTestScreen extends StatelessWidget {
                                 quarterTurns: 2,
                                 child: LinearPercentIndicator(
                                   barRadius: const Radius.circular(45),
-                                  percent: 0.1,
+                                  percent: (cubit.index + 1) / practices.length,
                                   animation: true,
                                   lineHeight: 16,
                                   progressColor: Colors.lightGreenAccent,
                                   width: 278,
                                   backgroundColor: const Color(0xffe0e0e0),
+                                  animateFromLastPercent: true,
                                 ),
                               ),
                               Text(
-                                '${1}/${practices.length}',
+                                '${cubit.index + 1}/${practices.length}',
                                 style: const TextStyle(
                                   color: Color(0xFF181C71),
                                   fontSize: 15.75,

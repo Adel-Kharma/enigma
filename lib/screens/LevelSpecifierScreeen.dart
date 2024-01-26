@@ -13,9 +13,12 @@ import '../shared/cubit/level_specifier/cubit.dart';
 import 'widgets/level_specifier_top_bar.dart';
 
 class LevelSpecifierScreen extends StatelessWidget {
-  const LevelSpecifierScreen({super.key, required this.lessonList});
+  const LevelSpecifierScreen(
+      {super.key, required this.lessonList, this.title = '', this.desc = ""});
 
   final List<LessonReader> lessonList;
+  final String title;
+  final String desc;
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +84,7 @@ class LevelSpecifierScreen extends StatelessWidget {
                                   child: Row(
                                     //crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Column(
+                                      Column(
                                         //mainAxisSize: MainAxisSize.min,
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
@@ -89,7 +92,7 @@ class LevelSpecifierScreen extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'المستوى الأوّل',
+                                            title,
                                             style: TextStyle(
                                               color: Color(0xFFF9F9F9),
                                               fontSize: 24,
@@ -103,7 +106,7 @@ class LevelSpecifierScreen extends StatelessWidget {
                                           SizedBox(
                                             width: 210,
                                             child: Text(
-                                              'يساعدك هذا المستوى على اكتساب الأساسيات التي سترافقك في مسيرتك التعليمية',
+                                              desc,
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
                                                 color: Color(0xFFF9F9F9),
@@ -209,8 +212,10 @@ class Section2 extends StatelessWidget {
           verticalSpace: 12,
           children: List.generate(
             testContents.length,
-            (index) =>
-                ExerciseCard(practices: testContents[index].getPractices()),
+            (index) => ExerciseCard(
+              practices: testContents[index].getPractices(),
+              title: testContents[index].prcTitle,
+            ),
           ),
         ),
         SizedBox(

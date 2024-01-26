@@ -18,7 +18,7 @@ class LessonReader {
   LessonReader(this.lessonNum) {
     //file = File('packages:enigma/assets/texts/lesson1.xml');
 
-    document = XmlDocument.parse(MyApp.roro);
+    document = XmlDocument.parse(MyApp.lessonList[lessonNum - 1]);
     title = document.children[0].getAttribute('title');
     prcTitle = document.children[0].getAttribute('prc-title');
 

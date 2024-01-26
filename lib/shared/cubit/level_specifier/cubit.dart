@@ -11,9 +11,6 @@ class LevelSpecifierCubit extends Cubit<LevelSpecifierState> {
 
   LevelSpecifierCubit(List<Widget> widgets, List<LessonReader> lessons)
       : super(LevelSpecifierInitial()) {
-    widgets.add(const ClosedSection());
-    widgets.add(const ClosedSection());
-    widgets.add(const ClosedSection());
     //todo set logic or on the lessons
     _contents.add(Section1(
       widgets: widgets,

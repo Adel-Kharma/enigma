@@ -1,0 +1,98 @@
+<lesson title="التوزيعات" prc-title="التجارب الثنائية">
+    <topics>
+        <topic
+            des="التجربة الثنائية وتوزيع بيرنولي وتوزيع الثنائي">تعريف بالتوزيعات الاحتمالية وأنواعها</topic>
+    </topics>
+    <pages>
+        <page>
+            <h1>تعريف بالتوزيعات الاحتمالية وأنواعها:</h1>
+            <h2>التجربة الثنائية وتوزيع بيرنولي وتوزيع الثنائي</h2>
+            <h2>أمثلة:</h2>
+            <text>رمي قطعة نقود هناك نتيجتين هما إمّا ظهور الكتابة أو الشعار.</text>
+            <text>الرمي باتجاه هدف إمّا إصابة الهدف أو إخفاق الهدف</text>
+            <text>قد يكون الشخص مدخن أو غير مدخن</text>
+            <text>اخترنا قطعة عشوائية من مصنع معين قد تكون خالية من أي عيب أو تكون معيبة صناعية.</text>
+            <h2>تجربة برنولي:</h2>
+            <text> هي تجربة عشوائية فضاء العينة لها مكون من نتيجتين إمّا تكون نجاح "S" احتمال وقوعها "P" أو تكون فشل "F" احتمال وقوعها "q" </text>
+            <text>حيث: "q+p=1"</text>
+            <h2>توزيع برنولي:</h2>
+            <text>بفرض x عشوائي يعبر عن ناتج تجربة بيرنولي وفق ما يلي x={0,1}</text>
+            <text>يكون جدول التوزيع الاحتمالي بالشكل:</text>
+            <img src="013" />
+            <lax>p\left(X=x\right)=p^x\ast q^{1-x}</lax>
+            <h2>التوزيع الثنائي:</h2>
+            <text>يستخدم لإيجاد احتمال وقوع حدث معين احتمال نجاحه P عددا من المرات اي عند تكرار تجربة برنولي عددا من المرات مقداره n بشرط</text>
+            <text>1- المحاولات مستقلة عن بعضها البعض.</text>
+            <text>2- النتيجتان متنافيتان لكل محاولة. </text>
+            <text>3- احتمال وقوع حدث معين لكل محاولة ثابت ولا يتغير من محاولة الى اخرى.</text>
+            <h2>مثال:</h2>
+            <text>إن x متغير عشوائي يدل على عدد مرات النجاح عند تكرار تجربة برنولي عدد من المرات مقداره n ، لذلك:  x={0,1,... ,n} يتم التعبير قانون التوزيع الثنائي كما يلي:</text>
+            <text>x~Bin(n,p)</text>
+            <lax>p\left(X=x\right)=C\left(n,x\right)\ast p^x\ast q^{n-x}</lax>
+            <h2>خصائص التوزيع:</h2>
+            <lax>E\left(x\right)=n\ast p</lax>
+            <lax>V\left(x\right)=n\ast p\ast q=E\left(x\right)\ast q</lax>
+        </page>
+        <qpage>
+            <group>
+                <text>لوحِظَ لفترة طويلة ان صيادا يصيد الهدف  باحتمال 85% فإذا أطلق 5 طلقات على الهدف </text>
+                <text>1-  ما هو التوزيع الذي تخضع له المسألة</text>
+            </group>
+            <text>التوزيع الثنائي</text>
+            <text>توزيع برنولي</text>
+            <text>توزيع بواسون</text>
+            <text>التوزيع الطبيعي</text>
+        </qpage>
+        <qpage>
+            <text>2- ما هو احتمال إصابة الهدف مرتين فقط؟</text>
+            <lax>\left(x=2\right)=C\left(5,2\right)\ast\left(0.85\right)^2\ast\left(0.15\right)^3</lax>
+            <lax>\left(x=2\right)=C\left(5,2\right)\ast\left(0.85\right)^3\ast\left(0.15\right)^2</lax>
+            <lax>\left(x=2\right)=C\left(2,5\right)\ast\left(0.85\right)^2\ast\left(0.15\right)^3</lax>
+            <lax>\left(x=2\right)=C\left(2,5\right)\ast\left(0.85\right)^3\ast\left(0.15\right)^2</lax>
+        </qpage>
+        <qpage>
+            <text>3- ما هو احتمال إصابة الهدف مرتين على الأكثر؟</text>
+            <lax>\left(x=0\right)+p\left(x=1\right)+p(x=2)</lax>
+            <lax>\left(x=0\right)\ast p\left(x=1\right)\ast p(x=2)</lax>
+            <lax>\left(x=3\right)+p\left(x=4\right)+p(x=5)</lax>
+            <lax>\left(x=3\right)\ast p\left(x=4\right)\ast p(x=5)</lax>
+        </qpage>
+        <qpage>
+            <text>4- ما هو احتمال إصابة الهدف مرتين على الأقل وأربع مرات على الأكثر؟</text>
+            <lax>\left(x=2\right)+p\left(x=3\right)+p(x=4)</lax>
+            <lax>\left(x=2\right)\ast p\left(x=3\right)\ast p(x=4)</lax>
+            <lax>\left(x=3\right)</lax>
+            <lax>\left(x=2\right)+p(x=4)</lax>
+        </qpage>
+    </pages>
+    <practices>
+        <practice>
+            <text>لدينا ثلاثة صناديق متماثلة يحتوي الصندوق الأول 3 كرات حمراء وكرتين بيضاء ويحتوي الصندوق الثاني على 5 كرات حمراء وكرتين بيضاء ويحتوي الصندوق الثالث على 8 كرات حمراء و9 بيضاء،نسحب كرة من أحد هذه الصناديق احسب احتمال أن تكون حمراء</text>
+            <text>0.49</text>
+            <text>0.40</text>
+            <text>0.35</text>
+            <text>لا شيء مما سبق</text>
+        </practice>
+        <practice>
+            <text>صندوق يحتوي على عشر كرات مرقمة من 1 إلى 10 نقوم بسحب كرتين معاً بطريقة عشوائية،ما احتمال سحب كرتين مجموع رقميهما 10</text>
+            <text>4/45</text>
+            <text>6/45</text>
+            <text>1/45</text>
+            <text>غير ذلك</text>
+        </practice>
+         <practice>
+            <text>صندوق يحتوي على عشر كرات مرقمة من 1 إلى 10 نقوم بسحب كرتين معاً بطريقة عشوائية،ما احتمال سحب كرتين الفرق بين رقميهما 4</text>
+            <text>6/45</text>
+            <text>4/45</text>
+            <text>1/45</text>
+            <text>غير ذلك</text>
+        </practice>
+        <practice>
+            <text>صندوق يحتوي على عشر كرات مرقمة من 1 إلى 10 نقوم بسحب كرتين معاً بطريقة عشوائية،ما احتمال سحب كرتين مجموع رقميهما 10 علماً أن الفرق بين رقميهما 4</text>
+            <text>1/6</text>
+            <text>4/6</text>
+            <text>6/6</text>
+            <text>غير ذلك</text>
+        </practice>
+    </practices>
+</lesson>

@@ -138,13 +138,53 @@ class LevelsSection extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => LevelSpecifierScreen(
+                            desc:
+                                'يساعدك هذا المستوى على اكتساب الأساسيات التي سترافقك في مسيرتك التعليمية',
+                            title: 'المستوى الأول',
                             lessonList: [
-                              LessonReader(1)
+                              LessonReader(1),
+                              LessonReader(2),
+                              LessonReader(3),
+                              LessonReader(4),
                             ], //todo add more lesson
                           )));
             }),
-        levelsCard(text: 'المستوى الثاني', isOpened: false),
-        levelsCard(text: 'المستوى الثالث', isOpened: false),
+        levelsCard(
+            text: 'المستوى الثاني',
+            isOpened: true,
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LevelSpecifierScreen(
+                            title: 'المستوى الثاني',
+                            desc:
+                                'يساعدك هذا المستوى على تمكين الأساسيات التي سترافقك في مسيرتك التعليمية',
+                            lessonList: [
+                              LessonReader(5),
+                              LessonReader(6),
+                              LessonReader(7),
+                            ],
+                          )));
+            }),
+        levelsCard(
+            text: 'المستوى الثالث',
+            isOpened: true,
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LevelSpecifierScreen(
+                            title: 'المستوى الثاني',
+                            desc:
+                                'يساعدك هذا المستوى على تمكين الأساسيات التي سترافقك في مسيرتك التعليمية',
+                            lessonList: [
+                              LessonReader(8),
+                              LessonReader(9),
+                              LessonReader(10),
+                            ],
+                          )));
+            }),
       ],
     );
   }

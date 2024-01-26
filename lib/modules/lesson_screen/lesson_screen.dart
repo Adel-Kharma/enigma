@@ -27,7 +27,10 @@ class LessonScreen extends StatelessWidget {
               child: Scaffold(
                 backgroundColor: const Color(0xffFFFFFF),
                 body: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  padding: const EdgeInsets.only(
+                    top: 16.0,
+                    bottom: 16.0,
+                  ),
                   child: Stack(
                     children: [
                       PageView.builder(
@@ -36,7 +39,7 @@ class LessonScreen extends StatelessWidget {
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
                             if (!cubit.isLast) {
-                              if (cubit.sectionNumberToShow == 5) {
+                              if (cubit.sectionNumberToShow == 0) {
                                 cubit.controller.nextPage(
                                     duration: const Duration(milliseconds: 600),
                                     curve: Curves.linearToEaseOut);
@@ -54,6 +57,8 @@ class LessonScreen extends StatelessWidget {
                               builder: (context, state) {
                                 LessonTestCubit testCubit =
                                     LessonTestCubit.get(context);
+                                testCubit
+                                    .prepareOrders(cubit.components!.length);
                                 return LessonScreenPage(
                                   cubit: cubit,
                                   page: cubit.components![index].getPage(
@@ -76,19 +81,22 @@ class LessonScreen extends StatelessWidget {
                                   onTap: () {
                                     showDialog(
                                         context: context,
-                                        builder: (context) => AlertDialog(
-                                              backgroundColor:
-                                                  const Color(0xFFF9F9F9),
-                                              shape: OutlineInputBorder(
-                                                  borderSide: BorderSide.none,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          16)),
-                                              content: const SizedBox(
-                                                height: 120,
-                                                child: Center(
-                                                    child:
-                                                        Text('بكير تنهي هلأ')),
+                                        builder: (context) => PopScope(
+                                              canPop: false,
+                                              child: AlertDialog(
+                                                backgroundColor:
+                                                    const Color(0xFFF9F9F9),
+                                                shape: OutlineInputBorder(
+                                                    borderSide: BorderSide.none,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            16)),
+                                                content: const SizedBox(
+                                                  height: 120,
+                                                  child: Center(
+                                                      child: Text(
+                                                          'بكير تنهي هلأ')),
+                                                ),
                                               ),
                                             ));
                                   },
