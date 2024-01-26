@@ -84,9 +84,9 @@
         </practice>
         <practice>
             <text>الحدث C ظهور شريحة من نوع DDR3</text>
-            <text>ّ C=ϕ وهو حدث مستحيل</text>
-            <text>ّ C=ϕ وهو حدث أكيد</text>
-            <text>ّ C={ } وهو حدث أكيد</text>
+            <text>ّيكون C=ф وهو حدث مستحيل</text>
+            <text>ّيكون C=ф وهو حدث أكيد</text>
+            <text>ّيكون C={ } وهو حدث أكيد</text>
             <text>ليس أياً مما سبق</text>
         </practice>
         <practice>
@@ -105,9 +105,9 @@
         </practice>
         <practice>
             <text>هل الحدثين D وA متنافيان ولماذا</text>
-            <text>لا لأن D∩A≠ϕ</text>
+            <text>لا لأن D∩A≠ф</text>
             <text>لا لأن A∩D=Ω</text>
-            <text>نعم لأن A∩D≠ϕ</text>
+            <text>نعم لأن A∩D≠ф</text>
             <text>لا لأن D∪A=Ω</text>
         </practice>
         <practice>

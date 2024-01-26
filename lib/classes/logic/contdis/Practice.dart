@@ -55,6 +55,7 @@ class Practice {
           break;
         case 'lax':
           list.add(Align(
+            alignment: Alignment.centerRight,
             child: Localizations.override(
               child: Math.tex(text),
               locale: const Locale('en'),
@@ -98,6 +99,7 @@ class Practice {
                 break;
               case 'lax':
                 smLis.add(Align(
+                  alignment: Alignment.centerRight,
                   child: Localizations.override(
                       context: context,
                       locale: const Locale('en'),

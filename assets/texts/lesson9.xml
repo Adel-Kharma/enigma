@@ -1,0 +1,133 @@
+﻿<lesson title="التوقعات والبيانات" prc-title="توقع وبيان">
+    <topics>
+        <topic
+            des="خواص القيمة المتوقعة والتباين والمتغيرين المستقلين">القيمة المتوقعة والتباين الاحتمالي</topic>
+    </topics>
+    <pages>
+        <page>
+            <h1>القيمة المتوقعة والتباين الاحتمالي</h1>
+            <h2>خواص القيمة المتوقعة والتباين والمتغيرين المستقلين</h2>
+            <h2>القيمة المتوقعة:</h2>
+            <text>هي متوسط القيمة التي يفترضها المتغير العشوائي على المدى الطويل أي متوسط مجتمع القياسات اي يصف اين يتركز التوزع الاحتمالي، تعطى رياضيا بالعلاقة:</text>
+            <lax>E\left(x\right)=\sum{X\ P(X=x)}</lax>
+            <text>تلزمنا لحساب التباين</text>
+            <lax>\ E\left(x^2\right)=\sum{X^2\ P(X=x)}</lax>
+            <h2>التباين:</h2>
+            <text>هو مقياس مدى انحراف قيم البيانات عن المتوسط وبالتالي يعطي توصيف كافي عن شكل التوزيع، ويعطى رياضيا بالعلاقة:</text>
+            <lax>V\left(x\right)=E\left(X^2\right)-[E(x)]^2</lax>
+        </page>
+        <page>
+            <h2>خواص القيمة المتوقعة:</h2>
+            <lax>E\left(X1+X2\right)=E\left(X1\right)+E(X2)</lax>
+            <lax>\forall a\in R\ ;a=const=>E\left(a\right)=a</lax>
+            <lax>E\left(a.X\right)=a.E\left(x\right)</lax>
+            <lax>E\left(ax\mp b\right)=aE\left(X\right)\mp b</lax>
+            <h2>خواص التباين:</h2>
+            <lax>V\left(X1+X2\right)=V\left(X1\right)+V(X2)</lax>
+            <lax>\forall a\in R\ ;a=const=>V\left(a\right)=0</lax>
+            <lax>V\left(a.X\right)=a^2.V\left(x\right)</lax>
+            <lax>V\left(ax\mp b\right)=a^2V\left(X\right)\mp V\left(b\right);V\left(b\right)=0</lax>
+        </page>
+        <page>
+            <h1>المتغيرين المستقلين:</h1>
+            <text>نقول عن متغيرين عشوائيين انهما مستقلين اذا كانت القيمة المتوقعة لجدائهما تساوي جداء القيمة المتوقعة لكل منهما أي يساوي:</text>
+            <text>E(X.Y)=E(X).E(Y)</text>
+            <h2>وبشكل آخر:</h2>
+            <lax>E\left[x.y\right]=\sum x_iy_iP\left(x=x_i,y=y_j\right)</lax>
+            <h2>مثال:</h2>
+            <text>في تجربة القاء قطعة نقود ثلاث مرات، بفرض xمتغير عشوائي يعبر عن عدد مرات ظهور t،ولدينا دالة الكثافة الاحتمالية بالشكل:</text>
+            <text>أن قيمة E(x) ,V(X)تساوي:</text>
+            <text>E(X)=1.5,V(X)=-0.75</text>
+            <text>وقيمة :V(2x-1),E(2X-1)</text>
+            <text>V(2x-1)=3,E(2X-1)=2</text>
+        </page>
+        <qpage>
+            <text>يلقي لاعب قطعتي نقود مرة واحدة يكسب 5 نقاط اذا ظهرت Hمرتين ويكسب نقطتين إذا ظهرتHمرة واحدة ويكسب نقطة ان لم تظهر Hأبدا والمطلوب أوجد توقع المكسب:</text>
+            <text>P(1)=1/4,p(2)=2/4,p(5)=1/4</text>
+            <text>P(5)=1/2,p(1)=1/4,p(2)=1/4</text>
+            <text>P(1)=1/3,p(5)=1/6,p(2)=3/6</text>
+            <text>P(1)=1/6,p(5)=1/3,p(2)=3/6</text>
+        </qpage>
+        <qpage>
+            <group>
+                <text>إذا كان لدينا الجدول:</text>
+                <text>1- إن القيمة المتوقعة ل x و y :</text>
+            </group>
+            <text>E[y]=0.6،E[x]=2</text>
+            <text>E[y]=-3،E[x]=0.16</text>
+            <text>E[y]=1،E[x]=0.6</text>
+            <text>E[y]=2،E[x]=0.6</text>
+        </qpage>
+        <qpage>
+            <text>2- هل نعتبر x و y متغيرن مستقلين ؟</text>
+            <text>نعم</text>
+            <text>لا</text>
+            <text>وارد</text>
+            <text>حسب الظرف</text>
+        </qpage>
+    </pages>
+    <practices>
+        <practice>
+            <text>القيمة المتوقعة للمتغير العشوائي x الجزئي، ويدل على العدد الظاهر في تجربة إلقاء حجر نرد مرة واحدة هو؟</text>
+            <text>3.5</text>
+            <text>1/6</text>
+            <text>1/8</text>
+            <text>21</text>
+        </practice>
+        <practice>
+            <group>
+                <text>عائلة مؤلفة من أب وأم و10 أطفال تم دعوة مجموعة من العائلة مكونة منأربع أشخاص ماهو عدد الطرق المختلفة لتشكيل المجموعات في الحالات الآتية:</text>
+                <text>1]-تحوي الأب والأم حصراً</text>
+            </group>
+            <text>45</text>
+            <text>145</text>
+            <text>240</text>
+            <text>210</text>
+        </practice>
+        <practice>
+            <text>2]-تحوي أحد الأبوين</text>
+            <text>240</text>
+            <text>45</text>
+            <text>210</text>
+            <text>12</text>
+        </practice>
+        <practice>
+            <text>3]-لا تحوي على الأبوين</text>
+            <text>210</text>
+            <text>19</text>
+            <text>30</text>
+            <text>45</text>
+        </practice>
+        <practice>
+            <group>
+                <text>في اختبار نهاية الفصل الدراسي وجد أن 40% من الطلبة نجحوا بمادة الإحصاء، و25% نجحوا بمادة الحاسوب، و20% نجحوا بمادتي الإحصاء والحاسوب، فإذا تم اختيار أحد الطلبة عشوائياً، أوجد احتمال وقوع الأحداث الثلاثة الآتية،</text>
+                <text>1]-نجاح الطالب في الحاسوب إذا علمنا أنه نجح في الإحصاء؟</text>
+            </group>
+            <text>1/2</text>
+            <text>1/4</text>
+            <text>1/8</text>
+            <text>كل ما سبق خاطئ</text>
+        </practice>
+        <practice>
+            <text>2]-نجاح الطالب في الإحصاء إذا علمنا أنه قد نجح في الحاسوب.</text>
+            <text>4/5</text>
+            <text>1/2</text>
+            <text>0</text>
+            <text>1</text>
+        </practice>
+        <practice>
+            <text>3]-نجاح الطالب في الإحصاء إذا علمنا أنه قد رسب في الحاسوب.</text>
+            <text>4/15</text>
+            <text>4/5</text>
+            <text>1/2</text>
+            <text>غير ذلك</text>
+        </practice>
+        <practice>
+            <text>4]-رسوب الطالب في الحاسوب بشرط رسوبه في الإحصاء</text>
+            <text>11/12</text>
+            <text>3/11</text>
+            <text>6/11</text>
+            <text>5/12</text>
+        </practice>
+    </practices>
+</lesson>

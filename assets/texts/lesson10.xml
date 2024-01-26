@@ -1,0 +1,136 @@
+<lesson title="التوزيعات" prc-title="التجارب الثنائية">
+    <topics>
+        <topic
+            des="التجربة الثنائية وتوزيع بيرنولي وتوزيع الثنائي">تعريف بالتوزيعات الاحتمالية وأنواعها</topic>
+    </topics>
+    <pages>
+        <page>
+            <h1>تعريف بالتوزيعات الاحتمالية وأنواعها:</h1>
+            <h2>التجربة الثنائية وتوزيع بيرنولي وتوزيع الثنائي</h2>
+            <h2>أمثلة:</h2>
+            <text>رمي قطعة نقود هناك نتيجتين هما إمّا ظهور الكتابة أو الشعار.</text>
+            <text>الرمي باتجاه هدف إمّا إصابة الهدف أو إخفاق الهدف</text>
+            <text>قد يكون الشخص مدخن أو غير مدخن</text>
+            <text>اخترنا قطعة عشوائية من مصنع معين قد تكون خالية من أي عيب أو تكون معيبة صناعية.</text>
+        </page>
+        <page>
+            <h2>تجربة برنولي:</h2>
+            <text> هي تجربة عشوائية فضاء العينة لها مكون من نتيجتين إمّا تكون نجاح "S" احتمال وقوعها "P" أو تكون فشل "F" احتمال وقوعها "q" </text>
+            <text>حيث: "q+p=1"</text>
+            <h2>توزيع برنولي:</h2>
+            <text>بفرض x عشوائي يعبر عن ناتج تجربة بيرنولي وفق ما يلي x={0,1}</text>
+            <text>يكون جدول التوزيع الاحتمالي بالشكل:</text>
+            <img src="013" />
+            <lax>p\left(X=x\right)=p^x\ast q^{1-x}</lax>
+        </page>
+        <page>
+            <h2>التوزيع الثنائي:</h2>
+            <text>يستخدم لإيجاد احتمال وقوع حدث معين احتمال نجاحه P عددا من المرات اي عند تكرار تجربة برنولي عددا من المرات مقداره n بشرط</text>
+            <text>1- المحاولات مستقلة عن بعضها البعض.</text>
+            <text>2- النتيجتان متنافيتان لكل محاولة. </text>
+            <text>3- احتمال وقوع حدث معين لكل محاولة ثابت ولا يتغير من محاولة الى اخرى.</text>
+            <h2>مثال:</h2>
+            <text>إن x متغير عشوائي يدل على عدد مرات النجاح عند تكرار تجربة برنولي عدد من المرات مقداره n ، لذلك:  x={0,1,... ,n} يتم التعبير قانون التوزيع الثنائي كما يلي:</text>
+            <text>x~Bin(n,p)</text>
+            <lax>p\left(X=x\right)=C\left(n,x\right)\ast p^x\ast q^{n-x}</lax>
+            <h2>خصائص التوزيع:</h2>
+            <lax>E\left(x\right)=n\ast p</lax>
+            <lax>V\left(x\right)=n\ast p\ast q=E\left(x\right)\ast q</lax>
+        </page>
+        <qpage>
+            <group>
+                <text>لوحِظَ لفترة طويلة ان صيادا يصيد الهدف  باحتمال 85% فإذا أطلق 5 طلقات على الهدف </text>
+                <text>1-  ما هو التوزيع الذي تخضع له المسألة</text>
+            </group>
+            <text>التوزيع الثنائي</text>
+            <text>توزيع برنولي</text>
+            <text>توزيع بواسون</text>
+            <text>التوزيع الطبيعي</text>
+        </qpage>
+        <qpage>
+            <text>2- ما هو احتمال إصابة الهدف مرتين فقط؟</text>
+            <lax>p\left(x=2\right)=C\left(5,2\right)\ast\left(0.85\right)^2\ast\left(0.15\right)^3</lax>
+            <lax>p\left(x=2\right)=C\left(5,2\right)\ast\left(0.85\right)^3\ast\left(0.15\right)^2</lax>
+            <lax>p\left(x=2\right)=C\left(2,5\right)\ast\left(0.85\right)^2\ast\left(0.15\right)^3</lax>
+            <lax>p\left(x=2\right)=C\left(2,5\right)\ast\left(0.85\right)^3\ast\left(0.15\right)^2</lax>
+        </qpage>
+        <qpage>
+            <text>3- ما هو احتمال إصابة الهدف مرتين على الأكثر؟</text>
+            <lax>p\left(x=0\right)+p\left(x=1\right)+p(x=2)</lax>
+            <lax>p\left(x=0\right)\ast p\left(x=1\right)\ast p(x=2)</lax>
+            <lax>p\left(x=3\right)+p\left(x=4\right)+p(x=5)</lax>
+            <lax>p\left(x=3\right)\ast p\left(x=4\right)\ast p(x=5)</lax>
+        </qpage>
+        <qpage>
+            <text>4- ما هو احتمال إصابة الهدف مرتين على الأقل وأربع مرات على الأكثر؟</text>
+            <lax>p\left(x=2\right)+p\left(x=3\right)+p(x=4)</lax>
+            <lax>p\left(x=2\right)\ast p\left(x=3\right)\ast p(x=4)</lax>
+            <lax>p\left(x=3\right)</lax>
+            <lax>p\left(x=2\right)+p(x=4)</lax>
+        </qpage>
+    </pages>
+    <practices>
+        <practice>
+            <group>
+                <text>نسبة القطع التالفة لأحد مصانع الأجهزة الخلوية هي 10%. نأخذ عينة من 5 أجهزة بشكل عشوائي من إنتاج هذا المصنع مع احتمال للحصول على</text>
+                <text>1- جهاز خليوي تالف:</text>
+            </group>
+            <lax>p\left(x=1\right)=C\left(5,1\right)\ast\left(0.1\right)\ast\left(0.9\right)^4</lax>
+            <lax>p\left(x=1\right)=C\left(5,1\right)\ast\left(0.1\right)^4\ast(0.9)</lax>
+            <lax>p\left(x=4\right)=C\left(5,1\right)\ast\left(0.1\right)\ast\left(0.9\right)^4</lax>
+            <lax>p\left(x=4\right)=C\left(5,1\right)\ast\left(0.1\right)^4\ast(0.9)</lax>
+        </practice>
+        <practice>
+            <text>2- جميع الاجهزة تالفة:</text>
+            <text>p(x=5)=0.00001</text>
+            <text>p(x=0)=0.00001</text>
+            <text>p(x=5)=0.590</text>
+            <text>p(x=0)=0.590</text>
+        </practice>
+        <practice>
+            <text>3- جميع الاجهزة تعمل:</text>
+            <text>p(x=0)=0.590</text>
+            <text>p(x=5)=0.00001</text>
+            <text>p(x=5)=0.590</text>
+            <text>p(x=0)=0.00001</text>
+        </practice>
+        <practice>
+            <text>4- جهاز واحد على الاقل تالف:</text>
+            <lax>p(x\geq 1)</lax>
+            <lax>p(x\le 1)</lax>
+            <lax>p(x=1)</lax>
+            <lax>p(x=5)</lax>
+        </practice>
+        <practice>
+            <group>
+                <text>احتمال أن يتعافى مريض من مرض نادر في الدم 0.4 ، إذا كان هناك 15 شخص مصاب بهذا المرض.</text>
+                <text>1- ما احتمال 10 على الأقل يبقون على قيد الحياة:</text>
+            </group>
+            <text>p(x=10)+p(x=11)+p(x=12)+p(x=13)+p(x=14)+p(x=15)</text>
+            <lax>p\left(x=10\right)=C\left(15,10\right)\ast\left(0.4\right)^{10}\ast\left(0.6\right)^5</lax>
+            <lax>p\left(x=5\right)=C\left(15,10\right)\ast\left(0.4\right)^5\ast\left(0.6\right)^{10}</lax>
+            <lax>p\left(x=10\right)=C\left(15,10\right)\ast\left(0.4\right)^{15}\ast\left(0.6\right)^{10}</lax>
+        </practice>
+        <practice>
+            <text>2- ما احتمال من 3 الى 8 يبقون على قيد الحياة:</text>
+            <text>p(3≤x≤8)</text>
+            <text>p(3&lt;x&lt;8)</text>
+            <text>p(x=5)</text>
+            <text>p(x=8)-p(x=3)</text>
+        </practice>
+        <practice>
+            <text>3- ما احتمال 5 أشخاص يبقون على قيد الحياة:</text>
+            <text>p(x=5)=0.1859</text>
+            <text>p(x=5)=0.1589</text>
+            <text>p(x=5)=0.1958</text>
+            <text>p(x=5)=0.125</text>
+        </practice>
+        <practice>
+            <text>4- احسب التوقع الرياضي E(x) والتباين V(x):</text>
+            <text>E(x)=6 ,V(x)=3.6</text>
+            <text>E(x)=6 ,V(x)=36</text>
+            <text>E(x)=3 ,V(x)=18</text>
+            <text>E(x)=4 ,V(x)=1.6</text>
+        </practice>
+    </practices>
+</lesson>

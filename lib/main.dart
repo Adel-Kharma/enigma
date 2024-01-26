@@ -21,15 +21,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
 
   void initLessons() async {
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 14; i++) {
       await rootBundle
           .loadString('assets/texts/lesson${i + 1}.xml')
-          .then((value) => MyApp.lessonList.add(value));
-    }
-
-    for (int i = 13; i < 16; i++) {
-      await rootBundle
-          .loadString('assets/texts/lesson${i}.xml')
           .then((value) => MyApp.lessonList.add(value));
     }
   }

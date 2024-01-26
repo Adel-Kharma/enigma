@@ -164,6 +164,8 @@ class LevelsSection extends StatelessWidget {
                               LessonReader(5),
                               LessonReader(6),
                               LessonReader(7),
+                              LessonReader(8),
+                              LessonReader(9),
                             ],
                           )));
             }),
@@ -175,13 +177,15 @@ class LevelsSection extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => LevelSpecifierScreen(
-                            title: 'المستوى الثاني',
+                            title: 'المستوى الثالث',
                             desc:
-                                'يساعدك هذا المستوى على تمكين الأساسيات التي سترافقك في مسيرتك التعليمية',
+                                'يساعدك هذا المستوى على احتراف الأساسيات التي سترافقك في مسيرتك التعليمية',
                             lessonList: [
-                              LessonReader(8),
-                              LessonReader(9),
                               LessonReader(10),
+                              LessonReader(11),
+                              LessonReader(12),
+                              LessonReader(13),
+                              LessonReader(14),
                             ],
                           )));
             }),

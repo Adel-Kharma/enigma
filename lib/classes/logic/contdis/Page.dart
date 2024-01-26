@@ -56,6 +56,7 @@ class Page {
             break;
           case 'lax':
             list.add(Align(
+              alignment: Alignment.centerRight,
               child: Localizations.override(
                   context: context,
                   locale: const Locale('en'),
@@ -275,15 +276,20 @@ class Page {
             ));
             break;
           case 'img':
-            list.add(Image(
-              image: AssetImage(
-                  'assets/res/${document.children[0].childElements.elementAt(i).getAttribute('src')}.png'),
+            list.add(Align(
+              child: Image(
+                image: AssetImage(
+                    'assets/res/${document.children[0].childElements.elementAt(i).getAttribute('src')}.png'),
+              ),
             ));
             list.add(const SizedBox(
               height: 8,
             ));
             break;
           case 'lax':
+            list.add(const SizedBox(
+              height: 8,
+            ));
             list.add(Align(
               child: Localizations.override(
                 context: context,
