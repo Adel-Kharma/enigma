@@ -45,131 +45,134 @@ class LevelSpecifierScreen extends StatelessWidget {
             builder: (context, state) {
               var cubit = LevelSpecifierCubit.get(context);
 
-              return Scaffold(
-                body: SafeArea(
-                    child: Stack(
-                  children: [
-                    Container(
-                      color: Color(0x800961f5),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: SvgPicture.asset(
-                          'assets/images/offercard.svg',
-                          height: 260,
-                          allowDrawingOutsideViewBox: true,
-                          fit: BoxFit.fill,
+              return MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                child: Scaffold(
+                  body: SafeArea(
+                      child: Stack(
+                    children: [
+                      Container(
+                        color: Color(0x800961f5),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: SvgPicture.asset(
+                            'assets/images/offercard.svg',
+                            height: 260,
+                            allowDrawingOutsideViewBox: true,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      child: Container(
-                        height: MediaQuery.of(context).size.height / 2,
-                        width: MediaQuery.of(context).size.width,
-                        color: const Color(0xFFF9F9F9),
-                        child: const Center(
-                          child: Text(''),
+                      Positioned(
+                        bottom: 0,
+                        child: Container(
+                          height: MediaQuery.of(context).size.height / 2,
+                          width: MediaQuery.of(context).size.width,
+                          color: const Color(0xFFF9F9F9),
+                          child: const Center(
+                            child: Text(''),
+                          ),
                         ),
                       ),
-                    ),
-                    CustomScrollView(
-                      slivers: [
-                        SliverFillRemaining(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 82, right: 16, left: 8),
-                                  child: Row(
-                                    //crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Column(
-                                        //mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            title,
-                                            style: TextStyle(
-                                              color: Color(0xFFF9F9F9),
-                                              fontSize: 24,
-                                              fontFamily: 'Cairo',
-                                              fontWeight: FontWeight.w800,
-                                              height: 0,
-                                              letterSpacing: -1.20,
-                                            ),
-                                          ),
-                                          SizedBox(height: 8),
-                                          SizedBox(
-                                            width: 210,
-                                            child: Text(
-                                              desc,
-                                              textAlign: TextAlign.right,
+                      CustomScrollView(
+                        slivers: [
+                          SliverFillRemaining(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 82, right: 16, left: 8),
+                                    child: Row(
+                                      //crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Column(
+                                          //mainAxisSize: MainAxisSize.min,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              title,
                                               style: TextStyle(
                                                 color: Color(0xFFF9F9F9),
-                                                fontSize: 13,
+                                                fontSize: 24,
                                                 fontFamily: 'Cairo',
-                                                fontWeight: FontWeight.w700,
+                                                fontWeight: FontWeight.w800,
                                                 height: 0,
-                                                letterSpacing: -0.39,
+                                                letterSpacing: -1.20,
+                                              ),
+                                            ),
+                                            SizedBox(height: 8),
+                                            SizedBox(
+                                              width: 210,
+                                              child: Text(
+                                                desc,
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                  color: Color(0xFFF9F9F9),
+                                                  fontSize: 13,
+                                                  fontFamily: 'Cairo',
+                                                  fontWeight: FontWeight.w700,
+                                                  height: 0,
+                                                  letterSpacing: -0.39,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          flex: 10,
+                                          child: SvgPicture.asset(
+                                            'assets/images/illustration/teamcollabrating.svg',
+                                            //height: 220,
+                                            allowDrawingOutsideViewBox: true,
+                                            //fit: BoxFit.fitWidth,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Stack(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 36.0),
+                                        child: Container(
+                                          decoration: ShapeDecoration(
+                                            color: Color(0xFFF9F9F9),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(16),
+                                                topRight: Radius.circular(16),
                                               ),
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      Expanded(
-                                        flex: 10,
-                                        child: SvgPicture.asset(
-                                          'assets/images/illustration/teamcollabrating.svg',
-                                          //height: 220,
-                                          allowDrawingOutsideViewBox: true,
-                                          //fit: BoxFit.fitWidth,
+                                          child: cubit.content,
                                         ),
-                                      )
+                                      ),
+
+                                      //progress
                                     ],
                                   ),
-                                ),
-                                Stack(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 36.0),
-                                      child: Container(
-                                        decoration: ShapeDecoration(
-                                          color: Color(0xFFF9F9F9),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(16),
-                                              topRight: Radius.circular(16),
-                                            ),
-                                          ),
-                                        ),
-                                        child: cubit.content,
-                                      ),
-                                    ),
-
-                                    //progress
-                                  ],
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    LevelSpecifierTopBar(
-                      index: cubit.index,
-                      onSec1: () {
-                        cubit.changeContent(0);
-                      },
-                      onSec2: () {
-                        cubit.changeContent(1);
-                      },
-                    ),
-                  ],
-                )),
+                        ],
+                      ),
+                      LevelSpecifierTopBar(
+                        index: cubit.index,
+                        onSec1: () {
+                          cubit.changeContent(0);
+                        },
+                        onSec2: () {
+                          cubit.changeContent(1);
+                        },
+                      ),
+                    ],
+                  )),
+                ),
               );
             }));
   }

@@ -21,73 +21,76 @@ class EducationalScreens extends StatelessWidget {
         builder: (context, state) {
           var cubit = EducationalScreensCubit.get(context);
 
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: const Color(0xff03A9F4),
-              leading: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios_sharp,
-                  color: Color(0xffF9F9F9),
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: Scaffold(
+              appBar: AppBar(
+                backgroundColor: const Color(0xff03A9F4),
+                leading: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios_sharp,
+                    color: Color(0xffF9F9F9),
+                  ),
+                ),
+                centerTitle: true,
+                title: const Text(
+                  'مرحباً، اسم المستخدم',
+                  style: TextStyle(
+                      fontFamily: 'Cairo',
+                      color: Color(0xffF9F9F9),
+                      fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.fade,
+                  maxLines: 1,
                 ),
               ),
-              centerTitle: true,
-              title: const Text(
-                'مرحباً، اسم المستخدم',
-                style: TextStyle(
-                    fontFamily: 'Cairo',
-                    color: Color(0xffF9F9F9),
-                    fontWeight: FontWeight.bold),
-                overflow: TextOverflow.fade,
-                maxLines: 1,
-              ),
-            ),
-            body: NumBackground(
-              child: Column(
-                children: [
-                  //searchBar(),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      roundedButton(
-                          text: 'تم الإكمال',
-                          textColor: const Color(0xff181C71),
-                          backgroundColor: const Color(0xffF9F9F9),
-                          onSec: () {
-                            cubit.changeContent(2);
-                          },
-                          selected: (cubit.index == 2)),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      roundedButton(
-                          text: 'قيد الممارسة',
-                          textColor: const Color(0xff181C71),
-                          backgroundColor: const Color(0xffF9F9F9),
-                          onSec: () {
-                            cubit.changeContent(1);
-                          },
-                          selected: (cubit.index == 1)),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      roundedButton(
-                          text: 'مستويات',
-                          textColor: const Color(0xff181C71),
-                          backgroundColor: const Color(0xffF9F9F9),
-                          onSec: () {
-                            cubit.changeContent(0);
-                          },
-                          selected: (cubit.index == 0)),
-                    ],
-                  ),
-                  cubit.content
-                ],
+              body: NumBackground(
+                child: Column(
+                  children: [
+                    //searchBar(),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        roundedButton(
+                            text: 'تم الإكمال',
+                            textColor: const Color(0xff181C71),
+                            backgroundColor: const Color(0xffF9F9F9),
+                            onSec: () {
+                              cubit.changeContent(2);
+                            },
+                            selected: (cubit.index == 2)),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        roundedButton(
+                            text: 'قيد الممارسة',
+                            textColor: const Color(0xff181C71),
+                            backgroundColor: const Color(0xffF9F9F9),
+                            onSec: () {
+                              cubit.changeContent(1);
+                            },
+                            selected: (cubit.index == 1)),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        roundedButton(
+                            text: 'مستويات',
+                            textColor: const Color(0xff181C71),
+                            backgroundColor: const Color(0xffF9F9F9),
+                            onSec: () {
+                              cubit.changeContent(0);
+                            },
+                            selected: (cubit.index == 0)),
+                      ],
+                    ),
+                    cubit.content
+                  ],
+                ),
               ),
             ),
           );
