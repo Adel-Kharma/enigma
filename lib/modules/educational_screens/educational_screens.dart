@@ -24,8 +24,9 @@ class EducationalScreens extends StatelessWidget {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
             child: Scaffold(
+              backgroundColor: Color(0xff4aa1ff),
               appBar: AppBar(
-                backgroundColor: const Color(0xff03A9F4),
+                backgroundColor: const Color(0xff3a7bff),
                 leading: IconButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -37,7 +38,7 @@ class EducationalScreens extends StatelessWidget {
                 ),
                 centerTitle: true,
                 title: const Text(
-                  'مرحباً، اسم المستخدم',
+                  'مرحباً بك في Enigma',
                   style: TextStyle(
                       fontFamily: 'Cairo',
                       color: Color(0xffF9F9F9),
@@ -46,51 +47,49 @@ class EducationalScreens extends StatelessWidget {
                   maxLines: 1,
                 ),
               ),
-              body: NumBackground(
-                child: Column(
-                  children: [
-                    //searchBar(),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        roundedButton(
-                            text: 'تم الإكمال',
-                            textColor: const Color(0xff181C71),
-                            backgroundColor: const Color(0xffF9F9F9),
-                            onSec: () {
-                              cubit.changeContent(2);
-                            },
-                            selected: (cubit.index == 2)),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        roundedButton(
-                            text: 'قيد الممارسة',
-                            textColor: const Color(0xff181C71),
-                            backgroundColor: const Color(0xffF9F9F9),
-                            onSec: () {
-                              cubit.changeContent(1);
-                            },
-                            selected: (cubit.index == 1)),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        roundedButton(
-                            text: 'مستويات',
-                            textColor: const Color(0xff181C71),
-                            backgroundColor: const Color(0xffF9F9F9),
-                            onSec: () {
-                              cubit.changeContent(0);
-                            },
-                            selected: (cubit.index == 0)),
-                      ],
-                    ),
-                    cubit.content
-                  ],
-                ),
+              body: Column(
+                children: [
+                  //searchBar(),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      roundedButton(
+                          text: 'تم الإكمال',
+                          textColor: const Color(0xff181C71),
+                          backgroundColor: const Color(0xffF9F9F9),
+                          onSec: () {
+                            cubit.changeContent(2);
+                          },
+                          selected: (cubit.index == 2)),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      roundedButton(
+                          text: 'قيد الممارسة',
+                          textColor: const Color(0xff181C71),
+                          backgroundColor: const Color(0xffF9F9F9),
+                          onSec: () {
+                            cubit.changeContent(1);
+                          },
+                          selected: (cubit.index == 1)),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      roundedButton(
+                          text: 'مستويات',
+                          textColor: const Color(0xff181C71),
+                          backgroundColor: const Color(0xffF9F9F9),
+                          onSec: () {
+                            cubit.changeContent(0);
+                          },
+                          selected: (cubit.index == 0)),
+                    ],
+                  ),
+                  cubit.content
+                ],
               ),
             ),
           );

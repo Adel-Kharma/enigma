@@ -100,7 +100,7 @@ class Page {
                 case 'lax':
                   smLis.add(const SizedBox(
                     height: 8,
-                  ));
+              ));
                   smLis.add(Align(
                     child: Localizations.override(
                         context: context,
@@ -138,11 +138,11 @@ class Page {
         height: 8,
       ));
       randomized.add(AnimatedOpacity(
-        opacity: (cubit.chosenAnswer == 0) ? 0 : 1,
+        opacity: (cubit.chosenAnswer[pageIndex] == 0) ? 0 : 1,
         duration: const Duration(milliseconds: 500),
         child: ElevatedButton(
           onPressed: () {
-            if (cubit.chosenAnswer != 0) {
+            if (cubit.chosenAnswer[pageIndex] != 0) {
               showModalBottomSheet(
                 backgroundColor: const Color(0xFFF9F9F9),
                 context: context,
@@ -381,146 +381,146 @@ class Page {
   Widget bottomSheetCelebration(BuildContext context) {
     return Center(
         child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const SizedBox(
-          height: 16,
-        ),
-        SvgPicture.asset('assets/images/illustration/iamproundofyou.svg'),
-        const Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'إجابة صحيحة!',
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                color: Color(0xFF00BC12),
-                fontSize: 20,
-                fontFamily: 'Cairo',
-                fontWeight: FontWeight.w800,
-                height: 0,
-                letterSpacing: -0.60,
-              ),
+            const SizedBox(
+              height: 16,
             ),
-            Text(
-              'هذا رائع، لا شك بأنك نيرد!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0x7F00BC13),
-                fontSize: 13,
-                fontFamily: 'Cairo',
-                fontWeight: FontWeight.w700,
-                height: 0,
-                letterSpacing: -0.39,
-              ),
-            )
-          ],
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              height: 32,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4),
-              decoration: ShapeDecoration(
-                color: const Color(0xFF00BC12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              child: const Center(
-                child: Text(
-                  'استمر في التقدّم',
+            SvgPicture.asset('assets/images/illustration/iamproundofyou.svg'),
+            const Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'إجابة صحيحة!',
+                  textAlign: TextAlign.right,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color(0xFF00BC12),
+                    fontSize: 20,
+                    fontFamily: 'Cairo',
+                    fontWeight: FontWeight.w800,
+                    height: 0,
+                    letterSpacing: -0.60,
+                  ),
+                ),
+                Text(
+                  'هذا رائع، لا شك بأنك نيرد!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0x7F00BC13),
                     fontSize: 13,
                     fontFamily: 'Cairo',
                     fontWeight: FontWeight.w700,
                     height: 0,
+                    letterSpacing: -0.39,
+                  ),
+                )
+              ],
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  height: 40,
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFF00BC12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'استمر في التقدّم',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 13,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-        )
-      ],
-    ));
+            )
+          ],
+        ));
   }
 
   Widget bottomSheetBahdalation(BuildContext context) {
     return Center(
         child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const SizedBox(
-          height: 16,
-        ),
-        SvgPicture.asset('assets/images/illustration/wornganswer.svg'),
-        const Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'إجابة خاطئة!',
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                color: Color(0xFFFF4B4C),
-                fontSize: 20,
-                fontFamily: 'Cairo',
-                fontWeight: FontWeight.w800,
-                height: 0,
-                letterSpacing: -0.60,
-              ),
+            const SizedBox(
+              height: 16,
             ),
-            Text(
-              'لا تقلق، فكلنا نخطئ في النهاية',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0x7FFF4B4C),
-                fontSize: 13,
-                fontFamily: 'Cairo',
-                fontWeight: FontWeight.w700,
-                height: 0,
-                letterSpacing: -0.39,
-              ),
-            )
-          ],
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              height: 32,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4),
-              decoration: ShapeDecoration(
-                color: const Color(0xFFFF4B4C),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              child: const Center(
-                child: Text(
-                  'استمر في التقدّم',
+            SvgPicture.asset('assets/images/illustration/wornganswer.svg'),
+            const Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'إجابة خاطئة!',
+                  textAlign: TextAlign.right,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color(0xFFFF4B4C),
+                    fontSize: 20,
+                    fontFamily: 'Cairo',
+                    fontWeight: FontWeight.w800,
+                    height: 0,
+                    letterSpacing: -0.60,
+                  ),
+                ),
+                Text(
+                  'لا تقلق، فكلنا نخطئ في النهاية',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0x7FFF4B4C),
                     fontSize: 13,
                     fontFamily: 'Cairo',
                     fontWeight: FontWeight.w700,
                     height: 0,
+                    letterSpacing: -0.39,
+                  ),
+                )
+              ],
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  height: 40,
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 4),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFFF4B4C),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'حاول مرة أخرى',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 13,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-        )
-      ],
-    ));
+            )
+          ],
+        ));
   }
 }

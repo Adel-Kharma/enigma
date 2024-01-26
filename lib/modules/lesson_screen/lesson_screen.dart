@@ -7,6 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../shared/components/components.dart';
+
 class LessonScreen extends StatelessWidget {
   const LessonScreen({super.key, required this.pages});
 
@@ -80,28 +82,7 @@ class LessonScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
-                                    onTap: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) => PopScope(
-                                                canPop: false,
-                                                child: AlertDialog(
-                                                  backgroundColor:
-                                                      const Color(0xFFF9F9F9),
-                                                  shape: OutlineInputBorder(
-                                                      borderSide: BorderSide.none,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              16)),
-                                                  content: const SizedBox(
-                                                    height: 120,
-                                                    child: Center(
-                                                        child: Text(
-                                                            'بكير تنهي هلأ')),
-                                                  ),
-                                                ),
-                                              ));
-                                    },
+                                    onTap: ()=> openAnimatedDialog(context),
                                     child: SvgPicture.asset(
                                         'assets/images/illustration/exit.svg')),
                                 SmoothPageIndicator(
@@ -255,3 +236,5 @@ Widget lessonScreen(
         ],
       ),
     );*/
+
+

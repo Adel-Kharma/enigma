@@ -11,3 +11,5 @@ class PracticePrevPage extends LessonTestState {}
 class RevealAns extends LessonTestState {}
 
 class CountCorrect extends LessonTestState {}
+
+class RevealAnswer extends LessonTestState {}
