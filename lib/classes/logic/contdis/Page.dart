@@ -98,6 +98,9 @@ class Page {
                   ));
                   break;
                 case 'lax':
+                  smLis.add(const SizedBox(
+                    height: 8,
+                  ));
                   smLis.add(Align(
                     child: Localizations.override(
                         context: context,

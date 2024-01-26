@@ -6,35 +6,22 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'screens/HomePage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   static List<String> lessonList = [];
   static String wisdom = '';
 
-  MyApp({super.key});
-
-  late final SharedPreferences prefs;
-  bool? repeat = false;
-  int i = 0;
+  const MyApp({super.key});
 
   // This widget is the root of your application.
 
   void initLessons() async {
-    prefs = await SharedPreferences.getInstance();
-    repeat = prefs.getBool('firstL');
-
-    if (repeat == false) {
-      i++;
-      await prefs.setBool('firstL', true);
-    }
-
     for (int i = 0; i < 14; i++) {
       await rootBundle
           .loadString('assets/texts/lesson${i + 1}.xml')
@@ -68,7 +55,7 @@ class MyApp extends StatelessWidget {
         Locale('en', 'US'),
       ],
       locale: const Locale('ar', 'AE'),
-      home: (i == 0) ? OnboardingScreen() : HomePage(),
+      home: HomePage(),
     );
   }
 }
