@@ -2,11 +2,14 @@
 
 import 'dart:math';
 
-import 'package:enigma/main.dart';
 import 'package:enigma/modules/NumBackground.dart';
 import 'package:enigma/modules/educational_screens/educational_screens.dart';
+import 'package:enigma/screens/quotes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+Random random = Random();
+String randomString = quotes[Random().nextInt(quotes.length)];
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -54,7 +57,7 @@ class HomePage extends StatelessWidget {
                             SizedBox(
                               width: 180,
                               child: Text(
-                                'لازم تدرس إحتمالات شان ما يصير فيك مثل جماعة ',
+                                'دروس مشان ما تفرش 😅',
                                 textAlign: TextAlign.right,
                                 style: TextStyle(
                                   color: Color(0xFFF9F9F9),
@@ -128,18 +131,49 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width - 64,
-                                  child: Text(
-                                    MyApp.wisdom.replaceAll('\n', ''),
-                                    textAlign: TextAlign.center,
-                                    softWrap: true,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontFamily: 'Cairo',
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    //overflow: TextOverflow.ellipsis,
+                                  height: 170,
+                                  width: 340,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          '#هل_تعلم',
+                                          textAlign: TextAlign.right,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontFamily: 'Cairo',
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      Text(
+                                        randomString,
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontFamily: 'Cairo',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      Center(
+                                        child: Text(
+                                          '#طرائف_ومعلوماتEngima 😁',
+                                          textAlign: TextAlign.right,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontFamily: 'Cairo',
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 )
                               ],
