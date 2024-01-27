@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import 'NumBackground.dart';
 import 'lesson_test_screen/cubit/lesson_test_state.dart';
 
 class Test extends StatelessWidget {
@@ -19,7 +18,7 @@ class Test extends StatelessWidget {
         builder: (context, state) {
           var cubit = LessonTestCubit.get(context);
           return Scaffold(
-            backgroundColor: Color(0xff4aa1ff),
+            backgroundColor: const Color(0xff4aa1ff),
             body: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,

@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../shared/components/components.dart';
-import '../NumBackground.dart';
 import 'cubit/educational_screens_cubit.dart';
 
 class EducationalScreens extends StatelessWidget {
@@ -22,9 +21,9 @@ class EducationalScreens extends StatelessWidget {
           var cubit = EducationalScreensCubit.get(context);
 
           return MediaQuery(
-            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
             child: Scaffold(
-              backgroundColor: Color(0xff4aa1ff),
+              backgroundColor: const Color(0xff4aa1ff),
               appBar: AppBar(
                 backgroundColor: const Color(0xff3a7bff),
                 leading: IconButton(

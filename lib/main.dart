@@ -1,8 +1,5 @@
-import 'dart:math';
 
 import 'package:enigma/classes/wisdom.dart';
-import 'package:enigma/modules/onboarding_screen/onboarding_screen.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -42,19 +39,19 @@ class MyApp extends StatelessWidget {
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Enigma',
-      localizationsDelegates: const [
+      localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
+      supportedLocales: [
         Locale('ar', 'AE'),
         Locale('en', 'US'),
       ],
-      locale: const Locale('ar', 'AE'),
+      locale: Locale('ar', 'AE'),
       home: HomePage(),
     );
   }

@@ -57,9 +57,9 @@ class Practice {
           list.add(Align(
             alignment: Alignment.centerRight,
             child: Localizations.override(
-              child: Math.tex(text),
               locale: const Locale('en'),
               context: context,
+              child: Math.tex(text),
             ),
           ));
           break;

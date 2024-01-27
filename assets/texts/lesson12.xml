@@ -1,4 +1,4 @@
-<lesson title="تعريف التوزيعات الاحتمالية و أنواعها" prc-title="توزيع بواسون">
+<lesson title="تعريف التوزيعات الاحتمالية و أنواعها للمتحول المنفصل" prc-title="توزيع بواسون">
     <topics>
         <topic des="توزيع بواسون وتقريب ثنائي الحدالى بواسون">توزيع بواسون </topic>
      </topics>
@@ -54,10 +54,10 @@
         </qpage>
         <qpage>
             <text>ما هي خواص هذا التوزيع</text>
-            <text>E(x)=V(x)=3</text>
-            <text>E(x)=3 ,V(x)=2</text>
-            <text>E(x)=2 ,V(x)=3</text>
-            <text>E(x)≠V(x)</text>
+            <lax>E(x)=V(x)=3</lax>
+            <lax>E(x)=3 ,V(x)=2</lax>
+            <lax>E(x)=2 ,V(x)=3</lax>
+            <lax>E(x)≠V(x)</lax>
         </qpage>
     </pages>
     <practices>
@@ -76,20 +76,20 @@
                 <text>إذا علمت ان معدل عدد طالبي استخدام آلة الصراف الآلي هو 5 أشخاص كل نصف ساعة</text>
                 <text>2- يقل تماما عن 3 اشخاص:</text>
             </group>
-            <text>P(x&lt;3)</text>
-            <text>P(x≤3)</text>
-            <text>P(x>3)</text>
-            <text>P(x≥3)</text>
+            <lax>P(x&lt;3)</lax>
+            <lax>P(x≤3)</lax>
+            <lax>P(x>3)</lax>
+            <lax>P(x≥3)</lax>
         </practice>
         <practice>
             <group>
                 <text>إذا علمت ان معدل عدد طالبي استخدام آلة الصراف الآلي هو 5 أشخاص كل نصف ساعة</text>
                 <text>3- شخص واحد على الأكثر:</text>
             </group>
-            <text>P(x=0)+P(x=1)</text>
-            <text>P(x=0)</text>
-            <text>P(x=1) </text>
-            <text>P(x=2)+P(x=3)+P(x=4)+P(x=5)</text>
+            <lax>P(x=0)+P(x=1)</lax>
+            <lax>P(x=0)</lax>
+            <lax>P(x=1) </lax>
+            <lax>P(x=2)+P(x=3)+P(x=4)+P(x=5)</lax>
         </practice>
         <practice>
             <group>
@@ -106,17 +106,17 @@
                     <text> احتمال وجود شخص أعسر في مجتمع هو 0.01 تم أختيار عينة من 400 شخص عشوائيا من هذا المجتمع.</text>
                     <text>1- احتمال وجود أربع أشخاص على الأقل يكتبون باليد اليسرى</text>
                 </group>
-                <text>0.566</text>
-                <text>0.65</text>
-                <text>0.323</text>
-                <text>0.651</text>
+                <lax>0.566</lax>
+                <lax>0.65</lax>
+                <lax>0.323</lax>
+                <lax>0.651</lax>
             </practice>
             <practice>
                 <text>2- خواص التوزيع للسؤال السابق.</text>
-                <text>E(x)=V(x)=4</text>
-                <text>E(x)=2 ,V(x)=3</text>
-                <text>E(x)=3 ,V(x)=2</text>
-                <text>E(x)≠V(x)</text>
+                <lax>E(x)=V(x)=4</lax>
+                <lax>E(x)=2 ,V(x)=3</lax>
+                <lax>E(x)=3 ,V(x)=2</lax>
+                <lax>E(x)≠V(x)</lax>
             </practice>
             <practice>
                 <group>

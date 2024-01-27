@@ -27,7 +27,7 @@ class LessonScreen extends StatelessWidget {
 
             return SafeArea(
               child: MediaQuery(
-                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
                 child: Scaffold(
                   backgroundColor: const Color(0xffFFFFFF),
                   body: Padding(

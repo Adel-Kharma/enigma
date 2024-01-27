@@ -582,7 +582,7 @@ Widget endPractice(BuildContext context, int all, int corr) {
     child: AlertDialog(
       backgroundColor: const Color(0xFFFFFFFF),
       content: SizedBox(
-        height: 420,
+        height: 490,
         width: 420,
         child: Center(
             child: Column(
@@ -602,10 +602,10 @@ Widget endPractice(BuildContext context, int all, int corr) {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'أحسنت صنعاً!',
+                Text(
+                  (corr * 2 >= all)? 'أحسنت صنعاً!' : 'حظاً أوفر',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFF4B54FF),
                     fontSize: 24,
                     fontFamily: 'Cairo',
@@ -661,8 +661,8 @@ Widget endPractice(BuildContext context, int all, int corr) {
                     ),
                     horizontalTitleGap: 0,
                     trailing: Transform.rotate(
-                      child: Icon(Icons.arrow_back_ios),
                       angle: 3.14159,
+                      child: const Icon(Icons.arrow_back_ios),
                     ),
                   ),
                 ),
@@ -677,7 +677,7 @@ Widget endPractice(BuildContext context, int all, int corr) {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
-                  height: 32,
+                  height: 40,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 32, vertical: 4),
                   decoration: ShapeDecoration(
@@ -729,13 +729,13 @@ void openAnimatedDialog(BuildContext context){
                   borderRadius:
                   BorderRadius.circular(
                       16)),
-              content: Container(
+              content: SizedBox(
                 width: double.infinity,
                 height: 150,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'هل أنت متأكد بأنك تريد إنهاء التدريب؟',
                       textAlign: TextAlign.right,
                       style: TextStyle(
@@ -759,10 +759,10 @@ void openAnimatedDialog(BuildContext context){
                             height: 40,
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                             decoration: ShapeDecoration(
-                              color: Color(0xFF4B54FF),
+                              color: const Color(0xFF4B54FF),
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                             ),
-                            child:Center(
+                            child:const Center(
                               child: Text(
                                 'لا بالتأكيد',
                                 style: TextStyle(
@@ -775,7 +775,7 @@ void openAnimatedDialog(BuildContext context){
                               ),
                             ),),
                         ),
-                        SizedBox(width: 48,),
+                        const SizedBox(width: 48,),
                         GestureDetector(
                           onTap: (){
                             Navigator.pop(context);
@@ -786,10 +786,10 @@ void openAnimatedDialog(BuildContext context){
                               height: 40,
                               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                               decoration: ShapeDecoration(
-                                color: Color(0xFFE71D36),
+                                color: const Color(0xFFE71D36),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                               ),
-                              child:Center(
+                              child:const Center(
                                 child: Text(
                                   'نعم ',
                                   style: TextStyle(

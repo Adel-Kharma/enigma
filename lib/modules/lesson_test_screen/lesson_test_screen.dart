@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import '../NumBackground.dart';
 import 'cubit/lesson_test_state.dart';
 
 class LessonTestScreen extends StatelessWidget {
@@ -24,9 +23,9 @@ class LessonTestScreen extends StatelessWidget {
           var cubit = LessonTestCubit.get(context);
           cubit.prepareOrders(practices.length);
           return MediaQuery(
-            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
             child: Scaffold(
-              backgroundColor: Color(0xff4aa1ff),
+              backgroundColor: const Color(0xff4aa1ff),
               body: Stack(
                 children: [
                   Positioned(
@@ -122,8 +121,9 @@ class LessonTestScreen extends StatelessWidget {
                                               for (int j = 0;
                                                   j < cubit.chosenAnswer.length;
                                                   j++) {
-                                                if (cubit.chosenAnswer[j] == 1)
+                                                if (cubit.chosenAnswer[j] == 1) {
                                                   coc++;
+                                                }
                                               }
                                               cubit.revealAnswers();
                                               Navigator.push(context,

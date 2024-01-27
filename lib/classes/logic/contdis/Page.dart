@@ -105,7 +105,7 @@ class Page {
                     child: Localizations.override(
                         context: context,
                         locale: const Locale('en'),
-                        child: Math.tex(textt)),
+                        child: Math.tex(textt, textStyle: const TextStyle(fontWeight: FontWeight.w400),)),
                   )); //todo prpr
                   break;
               }

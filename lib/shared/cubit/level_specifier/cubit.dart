@@ -1,6 +1,5 @@
 import 'package:enigma/classes/logic/contdis/LessonReader.dart';
 import 'package:enigma/screens/LevelSpecifierScreeen.dart';
-import 'package:enigma/screens/widgets/closed_section_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

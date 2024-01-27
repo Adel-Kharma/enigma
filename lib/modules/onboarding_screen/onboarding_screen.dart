@@ -21,7 +21,7 @@ class OnboardingScreen extends StatelessWidget {
           OnboardingCubit cubit = BlocProvider.of(context);
           return SafeArea(
             child: MediaQuery(
-              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
               child: Scaffold(
                 body: Stack(
                   children: [

@@ -46,7 +46,7 @@ class LevelSpecifierScreen extends StatelessWidget {
               var cubit = LevelSpecifierCubit.get(context);
 
               return MediaQuery(
-                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)),
                 child: Scaffold(
                   body: SafeArea(
                       child: Stack(

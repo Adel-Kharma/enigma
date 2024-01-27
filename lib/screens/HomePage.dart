@@ -2,7 +2,6 @@
 
 import 'dart:math';
 
-import 'package:enigma/modules/NumBackground.dart';
 import 'package:enigma/modules/educational_screens/educational_screens.dart';
 import 'package:enigma/screens/quotes.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +11,12 @@ Random random = Random();
 String randomString = quotes[Random().nextInt(quotes.length)];
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MediaQuery(
-      data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+      data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: Color(0xff4aa1ff),
         //appBar: AppBar(),

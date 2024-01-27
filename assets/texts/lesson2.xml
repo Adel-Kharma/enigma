@@ -31,10 +31,10 @@
                 <text>إن حل الجملة التالية هي المجموعة:</text>
                 <text>إن (X⊂D) و (X⊄B) هي المجموعة:</text>
             </group>
-            <text>E</text>
-            <text>D</text>
-            <text>C</text>
-            <text>E و D</text>
+            <lax>E</lax>
+            <lax>D</lax>
+            <lax>C</lax>
+            <lax>E و D</lax>
         </qpage>
         <qpage>
             <group>
@@ -42,10 +42,10 @@
                 <lax>\ X\subset D\ and \ X\subset B</lax>
                 <text>هي المجموعة:</text>
             </group>
-            <text>A</text>
-            <text>D</text>
-            <text>C</text>
-            <text>كل ما سبق خاطئ</text>
+            <text>غير ذلك</text>
+            <lax>D</lax>
+            <lax>C</lax>
+            <lax>A</lax>
         </qpage>
     </pages>
     <practices>
@@ -58,10 +58,10 @@
                 <lax>C=\left\{\ 3,\ 4,\ 5,\ 6\ \right\}</lax>
                 <text>إن A∪B تساوي:</text>
             </group>
-            <lax>A\bigcup B=\left\{1,\ 2,\ 3,\ 4,\ 6,\ 8\right\}</lax>
-            <lax>A\bigcup B=\left\{,3,4,5،6\right\}</lax>
-            <lax>A\bigcup B=\left\{1,2,,2 3,4,4,6,8،\right\}</lax>
-            <lax>A\bigcup B=\left\{\right\}</lax>
+            <lax>A∪B=\left\{1,\ 2,\ 3,\ 4,\ 6,\ 8\right\}</lax>
+            <lax>A∪B=\left\{,3,4,5،6\right\}</lax>
+            <lax>A∪B=\left\{1,2,,2 3,4,4,6,8،\right\}</lax>
+            <lax>A∪B=\left\{\right\}</lax>
         </practice>
         <practice>
             <text>إن A∪C تساوي:</text>
@@ -71,7 +71,7 @@
             <lax>A\cup C=\left\{\ 3,\ 4,\ 5,\ 6\ \right\}</lax>
         </practice>
         <practice>
-            <text>إن A∩C تساوي:</text>
+            <lax>إن A∩C تساوي:</lax>
             <lax>A\cap C=\left\{3,\ 4\right\}</lax>
             <lax>A\cup C=\left\{1,\ 2,\ 3,\ 4,\ 5,\ 6\ \right\}</lax>
             <lax>A\cap C=\left\{2,1,3,\ 4,5,6\right\}</lax>

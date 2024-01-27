@@ -1,4 +1,4 @@
-<lesson title="تعريف التوزيعات الاحتمالية و أنواعها:" prc-title="التوزيع المنتظم">
+<lesson title="تعريف التوزيعات الاحتمالية و أنواعها للمتحول المستمر" prc-title="التوزيع المنتظم">
     <topics>
         <topic des="التوزيع المنتظم ">التوزيع المنتظم</topic>
     </topics>
@@ -45,17 +45,17 @@
         </practice>
         <practice>
             <text>ما هو الزمن المتوقع وسطياً لانتظار الحافلة</text>
-            <text>E(x)=10</text>
-            <text>E(x)=15</text>
-            <text>E(x)=20</text>
-            <text>E(x)=0 </text>
+            <lax>E(x)=10</lax>
+            <lax>E(x)=15</lax>
+            <lax>E(x)=20</lax>
+            <lax>E(x)=0 </lax>
         </practice>
         <practice>
             <text>أوجد التباين</text>
-            <text>V(x)=33.33</text>
-            <text>V(x)=10.43</text>
-            <text>V(x)=12.45</text>
-            <text>V(x)=43.32</text>
+            <lax>V(x)=33.33</lax>
+            <lax>V(x)=10.43</lax>
+            <lax>V(x)=12.45</lax>
+            <lax>V(x)=43.32</lax>
         </practice>
         <practice>
             <group>
