@@ -12,7 +12,7 @@
             <lax>X\sim N(\mu,\sigma^2)</lax>
             <h2>دالة الكثافة الإحتمالية:</h2>
             <text>تعطى دالة الكثافة الاحتمالية بالشكل </text>
-            <lax>f\left(x\right)=\left\{\begin{matrix}\frac{1}{\sigma\sqrt2\pi}\ e^\frac{_(x_\mu)2\ }{2\sigma^2} &amp; ;-\infty&lt;x&lt;\infty\\0&amp; ;otherwise\end{matrix}\right.</lax>
+            <lax>f\left(x\right)=\left\{\begin{matrix}\frac{1}{\sigma\sqrt2\pi}\ e^\frac{-(x-\mu)2\ }{2\sigma^2} &amp; ;-\infty&lt;x&lt;\infty\\0&amp; ;otherwise\end{matrix}\right.</lax>
         </page>
         <page>
             <h2>: خصائص التوزيع الطبيعي</h2>
@@ -25,7 +25,7 @@
         <page>
             <h2>التوزيع الطبيعي المعياري:</h2>
             <text>هو التوزيع الطبيعي الذي وسطه الحسابي μ=0 وتباينه σ^2=1وتكتب دالة الكثافة الاحتمالية للتوزيع الطبيعي المعياري</text>
-            <lax>f\left(z\right)=\left\{\begin{matrix}\frac{1}{\sqrt2\pi}\ e^\frac{-z^2}{\sqrt2\pi}\  &amp; ;-\infty&lt;z&lt;\infty\\0&amp; ;otherwise\end{matrix}\right.</lax>
+            <lax>f\left(z\right)=\left\{\begin{matrix}\frac{1}{\sqrt2\pi}\ e^\frac{-z^2}{2}\  &amp; ;-\infty&lt;z&lt;\infty\\0&amp; ;otherwise\end{matrix}\right.</lax>
             <text>كيفية حساب القيمة</text>
             <lax>P(x_1 &lt;x&lt; x_2 ) ?</lax>
             <text>نوجد المقدار </text>
