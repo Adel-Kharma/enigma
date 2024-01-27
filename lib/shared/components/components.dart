@@ -707,3 +707,108 @@ Widget endPractice(BuildContext context, int all, int corr) {
     ),
   );
 }
+
+void openAnimatedDialog(BuildContext context){
+  showGeneralDialog(context: context, pageBuilder: (context, animation1, animation2)
+  {
+    return Container();
+  },
+      //barrierDismissible: true,
+      //barrierLabel: '',
+      //transitionDuration: const Duration(microseconds: 400),
+      transitionBuilder: (context, a1, a2, widget){
+        return ScaleTransition(
+          scale: Tween<double>(begin:  0.5, end: 1).animate(a1),
+          child: FadeTransition(
+            opacity: Tween<double>(begin:  0.5, end: 1).animate(a1),
+            child: AlertDialog(
+              backgroundColor:
+              const Color(0xFFF9F9F9),
+              shape: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius:
+                  BorderRadius.circular(
+                      16)),
+              content: Container(
+                width: double.infinity,
+                height: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'هل أنت متأكد بأنك تريد إنهاء التدريب؟',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        color: Color(0xFFE71D36),
+                        fontSize: 16,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w800,
+                        height: 0,
+                        letterSpacing: -0.60,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: 116,
+                            height: 40,
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                            decoration: ShapeDecoration(
+                              color: Color(0xFF4B54FF),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            ),
+                            child:Center(
+                              child: Text(
+                                'لا بالتأكيد',
+                                style: TextStyle(
+                                  color: Color(0xFFF9F9F9),
+                                  fontSize: 13,
+                                  fontFamily: 'Cairo',
+                                  fontWeight: FontWeight.w700,
+                                  height: 0,
+                                ),
+                              ),
+                            ),),
+                        ),
+                        SizedBox(width: 48,),
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                              width: 82,
+                              height: 40,
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                              decoration: ShapeDecoration(
+                                color: Color(0xFFE71D36),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              ),
+                              child:Center(
+                                child: Text(
+                                  'نعم ',
+                                  style: TextStyle(
+                                    color: Color(0xFFF9F9F9),
+                                    fontSize: 13,
+                                    fontFamily: 'Cairo',
+                                    fontWeight: FontWeight.w700,
+                                    height: 0,
+                                  ),
+                                ),
+                              )),
+                        )
+                      ],
+                    )],
+                ),
+              ),
+            ),
+          ),
+        );
+      }
+  );
+}
